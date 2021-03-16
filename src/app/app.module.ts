@@ -10,12 +10,20 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './helpers/jwt-interceptor.service';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { DefaultComponent } from './default/default.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SiderbarComponent } from './siderbar/siderbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConnexionComponent,
-    AlertComponent
+    AlertComponent,
+    NotfoundComponent,
+    DefaultComponent,
+    NavbarComponent,
+    SiderbarComponent
   ],
   imports: [
     BrowserModule,

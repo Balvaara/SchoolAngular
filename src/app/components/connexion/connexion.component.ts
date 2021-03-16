@@ -54,8 +54,9 @@ export class ConnexionComponent implements OnInit {
         .pipe(first())
         .subscribe(
             data => {
-                this.router.navigate([this.returnUrl]);
+                this.router.navigate(['default']);
             },
+            
             error => {
               alert('Username or password is incorrect')                                                                               
                 this.loading = false;
