@@ -39,6 +39,7 @@ export class ConnexionComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
+  
     this.submitted = true;
 
     // reset alerts on submit
@@ -54,6 +55,7 @@ export class ConnexionComponent implements OnInit {
         .pipe(first())
         .subscribe(
             data => {
+              
                 this.router.navigate(['default']);
             },
             
