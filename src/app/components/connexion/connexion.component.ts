@@ -56,7 +56,7 @@ export class ConnexionComponent implements OnInit {
         .subscribe(
             data => {
               
-                this.router.navigate(['default']);
+                this.router.navigate(['default/static']);
             },
             
             error => {

@@ -1,3 +1,5 @@
+import { ListePayementComponent } from './payements/liste-payement/liste-payement.component';
+import { AjoutPyementComponent } from './payements/ajout-pyement/ajout-pyement.component';
 import { StaticComponent } from './static/static/static.component';
 import { ListerUserComponent } from './users/lister-user/lister-user.component';
 import { AjouUserComponent } from './users/ajou-user/ajou-user.component';
@@ -16,7 +18,9 @@ const routes: Routes = [
   [
     { path: 'ajout_user', component:AjouUserComponent},
     { path: 'lister_user', component:ListerUserComponent},
-    { path: 'static', component: StaticComponent }
+    { path: 'static', component: StaticComponent },
+    { path: 'payement', component: AjoutPyementComponent },
+    { path: 'liste_payement', component: ListePayementComponent }
   ]
 },
 { path: '**', component: NotfoundComponent },

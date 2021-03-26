@@ -23,6 +23,7 @@
     "angular-confirmation-popover": "^6.0.0",
     "angular-feather": "^6.1.0",
     "bootstrap": "^4.6.0",
+
     "jw-angular-pagination": "^1.2.0",
     "ng2-search-filter": "^0.5.1",
     "ngx-pagination": "^5.0.0",

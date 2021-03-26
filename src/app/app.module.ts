@@ -21,6 +21,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { StaticComponent } from './static/static/static.component';
+import { AjoutPyementComponent } from './payements/ajout-pyement/ajout-pyement.component';
+import { ListePayementComponent } from './payements/liste-payement/liste-payement.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { StaticComponent } from './static/static/static.component';
     ListerUserComponent,
     JwPaginationComponent,
     StaticComponent,
+    AjoutPyementComponent,
+    ListePayementComponent,
   ],
   imports: [
     BrowserModule,
