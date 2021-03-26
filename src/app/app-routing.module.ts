@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'default', component:DefaultComponent,canActivate:[AuthGuard],
   children:
   [
+  
     { path: 'ajout_user', component:AjouUserComponent},
     { path: 'lister_user', component:ListerUserComponent},
     { path: 'static', component: StaticComponent },
