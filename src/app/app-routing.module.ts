@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { AcceilComponent } from './acceil/acceil.component';
 
 
 const routes: Routes = [
@@ -14,9 +15,11 @@ const routes: Routes = [
   { path: 'default', component:DefaultComponent,canActivate:[AuthGuard],
   children:
   [
+  
     { path: 'ajout_user', component:AjouUserComponent},
     { path: 'lister_user', component:ListerUserComponent},
     { path: 'static', component: StaticComponent }
+    
   ]
 },
 { path: '**', component: NotfoundComponent },
