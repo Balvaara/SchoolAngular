@@ -1,198 +1,94 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>SaAngular</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="description" content="CodedThemes">
-  <meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
-  <meta name="author" content="CodedThemes">
-  <link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Web Hosting HTML-5 Template </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="assets/connexion/img/favicon.ico">
 
-	<!-- Fonts and icons -->
-	<script src="assets/js/plugin/webfont/webfont.min.js"></script>
-	<script>
-		WebFont.load({
-			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
-			active: function() {
-				sessionStorage.fonts = true;
-			}
-		});
-	</script>
+		<!-- CSS here -->
+            <link rel="stylesheet" href="assets/connexion/css/bootstrap.min.css">
+            <link rel="stylesheet" href="assets/connexion/css/owl.carousel.min.css">
+            <link rel="stylesheet" href="assets/connexion/css/slicknav.css">
+            <link rel="stylesheet" href="assets/connexion/css/flaticon.css">
+            <link rel="stylesheet" href="assets/connexion/css/animate.min.css">
+            <link rel="stylesheet" href="assets/connexion/css/magnific-popup.css">
+            <link rel="stylesheet" href="assets/connexion/css/fontawesome-all.min.css">
+            <link rel="stylesheet" href="assets/connexion/css/themify-icons.css">
+            <link rel="stylesheet" href="assets/connexion/css/slick.css">
+            <link rel="stylesheet" href="assets/connexion/css/nice-select.css">
+            <link rel="stylesheet" href="assets/connexion/css/style.css">
+   </head>
 
-	<!-- CSS Files -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/atlantis.min.css">
+   <body>
+    
+   
+    <main>
 
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="assets/css/demo.css">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-<h2>Login</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-groupz">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control   " [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username est Obligatoire</div>
+        <!-- Slider Area Start-->
+        <div class="slider-area slider-bg ">
+            <div class="slider-active dot-style">
+                <div class="single-slider d-flex align-items-center slider-height ">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-9 ">
+                                <div class="hero__caption">
+                                    <h1 data-animation="fadeInLeft" data-delay=".3s">Hosting digital  technology web  solution! </h1>
+                                    <p data-animation="fadeInLeft" data-delay=".6s">Automated Control Panel with Up to 50% Off  Hosting Starting from $2.50/Month.</p>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="hero__img d-none d-lg-block f-right">
+                                    <img src="assets/connexion/img/hero/hero_right.png" alt="" data-animation="fadeInRight" data-delay="1s">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+                  
+                 
+            </div>
+            
+
         </div>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control   " [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password est Obligatoire</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Login
-        </button>
-        <!-- <a routerLink="/register" class="btn btn-link">Register</a> -->
-    </div>
-</form>
+        
+</main>
+    <!-- JS here -->
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="assets/connexion/js/vendor/modernizr-3.5.0.min.js"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="assets/connexion/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="assets/connexion/js/popper.min.js"></script>
+        <script src="assets/connexion/js/bootstrap.min.js"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="assets/connexion/js/jquery.slicknav.min.js"></script>
 
-<!--   Core JS Files   -->
-<script src="assets/js/core/jquery.3.2.1.min.js"></script>
-<script src="assets/js/core/popper.min.js"></script>
-<script src="assets/js/core/bootstrap.min.js"></script>
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="assets/connexion/js/owl.carousel.min.js"></script>
+        <script src="assets/connexion/js/slick.min.js"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="assets/connexion/js/wow.min.js"></script>
+		<script src="assets/connexion/js/animated.headline.js"></script>
+        <script src=".assets/js/jquery.magnific-popup.js"></script>
 
-<!-- jQuery UI -->
-<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-<script src="assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-
-<!-- jQuery Scrollbar -->
-<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-
-
-<!-- Chart JS -->
-<script src="assets/js/plugin/chart.js/chart.min.js"></script>
-
-<!-- jQuery Sparkline -->
-<script src="assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
-
-<!-- Chart Circle -->
-<script src="assets/js/plugin/chart-circle/circles.min.js"></script>
-
-<!-- Datatables -->
-<script src="assets/js/plugin/datatables/datatables.min.js"></script>
-
-<!-- Bootstrap Notify -->
-<script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
-
-<!-- jQuery Vector Maps -->
-<script src="assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-<script src="assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
-
-<!-- Sweet Alert -->
-<script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
-
-<!-- Atlantis JS -->
-<script src="assets/js/atlantis.min.js"></script>
-
-<!-- Atlantis DEMO methods, don't include it in your project! -->
-<script src="assets/js/setting-demo.js"></script>
-<script src="assets/js/demo.js"></script>
-<script>
-  Circles.create({
-    id:'circles-1',
-    radius:45,
-    value:60,
-    maxValue:100,
-    width:7,
-    text: 5,
-    colors:['#f1f1f1', '#FF9E27'],
-    duration:400,
-    wrpClass:'circles-wrp',
-    textClass:'circles-text',
-    styleWrapper:true,
-    styleText:true
-  })
-
-  Circles.create({
-    id:'circles-2',
-    radius:45,
-    value:70,
-    maxValue:100,
-    width:7,
-    text: 36,
-    colors:['#f1f1f1', '#2BB930'],
-    duration:400,
-    wrpClass:'circles-wrp',
-    textClass:'circles-text',
-    styleWrapper:true,
-    styleText:true
-  })
-
-  Circles.create({
-    id:'circles-3',
-    radius:45,
-    value:40,
-    maxValue:100,
-    width:7,
-    text: 12,
-    colors:['#f1f1f1', '#F25961'],
-    duration:400,
-    wrpClass:'circles-wrp',
-    textClass:'circles-text',
-    styleWrapper:true,
-    styleText:true
-  })
-
-  var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
-
-  var mytotalIncomeChart = new Chart(totalIncomeChart, {
-    type: 'bar',
-    data: {
-      labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-      datasets : [{
-        label: "Total Income",
-        backgroundColor: '#ff9e27',
-        borderColor: 'rgb(23, 125, 255)',
-        data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-      }],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      legend: {
-        display: false,
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            display: false //this will remove only the label
-          },
-          gridLines : {
-            drawBorder: false,
-            display : false
-          }
-        }],
-        xAxes : [ {
-          gridLines : {
-            drawBorder: false,
-            display : false
-          }
-        }]
-      },
-    }
-  });
-
-  $('#lineChart').sparkline([105,103,123,100,95,105,115], {
-    type: 'line',
-    height: '70',
-    width: '100%',
-    lineWidth: '2',
-    lineColor: '#ffa534',
-    fillColor: 'rgba(255, 165, 52, .14)'
-  });
-</script>
-</body>
+		<!-- Nice-select, sticky -->
+        <script src="assets/connexion/js/jquery.nice-select.min.js"></script>
+		<script src="assets/connexion/js/jquery.sticky.js"></script>
+        
+        <!-- contact js -->
+        <script src="assets/connexion/js/contact.js"></script>
+        <script src="assets/connexion/js/jquery.form.js"></script>
+        <script src="assets/connexion/js/jquery.validate.min.js"></script>
+        <script src="assets/connexion/js/mail-script.js"></script>
+        <script src="assets/connexion/js/jquery.ajaxchimp.min.js"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="assets/connexion/js/plugins.js"></script>
+        <script src="assets/connexion/js/main.js"></script>
+        
+    </body>
 </html>
-
-
