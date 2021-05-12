@@ -52,6 +52,16 @@
             </div>
         </div>
     </div>
+     <div class="form-group col-md-5">
+            <div class="form-group form-floating-label">
+                <select class="form-control input-solid" id="selectFloatingLabel2" formControlName="ses" >
+                    <option value="">Session</option>
+                    <option *ngFor=" let ses of allsession " value="{{ses.id}}">
+                        {{ses.libAnn}}
+                    </option>
+                </select>
+            </div>
+        </div>
     <div class="card-action">
         <button  class="btn btn-primary">
             <span class="spinner-border spinner-border-sm mr-1"></span>
@@ -73,9 +83,9 @@
         <thead>
             <tr >
                 <th scope="col">#</th>
+                <th scope="col">Num_Ins</th>
                 <th scope="col">Mois</th>
-                <th scope="col">Nom Eleve</th>
-                <th scope="col">Prenom Eleve</th>
+                <th scope="col">Prenom & Nom</th>
                 <th scope="col">Classe</th>
                 <th scope="col">Date Paeyment</th>
                 <th scope="col">Montant</th>
@@ -84,12 +94,13 @@
         <tbody>
             <tr  *ngFor="let paye of allpay | paginate:{itemsPerPage:5,currentPage:p}| filter:term ">
                 <td>{{paye.id}}</td>
+                <td>{{paye.numPaye}}</td>
                 <td>{{paye.mois.libellemois}}</td>
-                <td>{{paye.eleves.nom}}</td>
-                <td>{{paye.eleves.prenom}}</td>
-                <td>{{paye.eleves.classes.libelleclasse}}</td>
+                <td>{{paye.inscrire.eleves.prenom}} {{paye.inscrire.eleves.nom}}</td>
+                <td>{{paye.inscrire.classes.libelleclasse}}</td>
                 <td>{{paye.dateDePayement | date:'dd-MM-yyyy H:mm:ss'}}</td>
-                <td>{{paye.montant}}</td>
+                <td>{{paye.montantMensualite}}</td>
+                
             
             </tr>
            
@@ -104,7 +115,7 @@
     <div class="card-action">
         <button  class="btn btn-primary" (click)="retour()">
             <span class="spinner-border spinner-border-sm mr-1"></span>
-            <i class="fa fa-search search-icon"></i>Recherche
+            <i class="fa fa-search search-icon"></i>Retour
         </button>
     </div>
 </div>   

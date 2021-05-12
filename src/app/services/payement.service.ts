@@ -21,10 +21,19 @@ payement:Payement
   Isersion(payement){
     return this.HttpClient.post<any>(`${environment.myApi}/api/ajout_payement`,payement);
   }
-  getPayMois(id){
-    return this.HttpClient.get<any>(`${environment.myApi}/api/get_pay/${id}`);
+  getPayMois(id,nb){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/get_pay/${id},${nb}`);
   }
-  getPayEl(matriculeEleve){
-    return this.HttpClient.get<any>(`${environment.myApi}/api/get_pay_by_mat/${matriculeEleve}`);
+  getPayEl(matriculeEleve,id){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/get_pay_by_mat/${matriculeEleve},${id}`);
+  }
+
+  getSession(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/annee_acads`);
+  }
+  
+
+  getClasse(ses,mat){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/getClasse/${ses},${mat}`);
   }
 }

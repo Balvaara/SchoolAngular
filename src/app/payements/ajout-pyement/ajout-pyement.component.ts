@@ -18,6 +18,7 @@ export class AjoutPyementComponent implements OnInit {
   submitted = false;
   matriculeEleve='';
   
+  allsession
   nom='';prenom='';classes='';
   constructor(private formBuilder: FormBuilder,
     private pay:PayementService,
@@ -26,35 +27,42 @@ export class AjoutPyementComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       matriculeEleve: ['', Validators.required],
-      montant: ['', Validators.required],
+      session: ['', Validators.required],
       mois: ['', Validators.required]
   });
+  this.pay.getSession().subscribe(
+    data=>{this.allsession=data['hydra:member'];
+    //  console.log(data);
+  }                                                                       
+     )
     
   this.onChanges();
+  // this.onChanges1();
 
   this.pay.getMois().subscribe(
     data=>{this.allmois=data['hydra:member'];
-    //  console.log(data);
+      // console.log(data);
   }                                                                       
      )
   }
   //auto remplissage
   onChanges(): void {
     this.loginForm.get('matriculeEleve').valueChanges.subscribe(val => {
-      // console.log(val);
+      // console.log(val);  
      
       this.getEleveByMat(val);
     });
   }
+
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
     const pay={
       matriculeEleve:this.loginForm.value.matriculeEleve,
-      montant:parseInt(this.loginForm.value.montant),
+      session:this.loginForm.value.session,
       mois:`api/mois/${this.loginForm.value.mois}`,
   }
-  console.log(pay);
+  console.log(this.loginForm.value);
     this.submitted = true;
 
 
@@ -90,7 +98,7 @@ getEleveByMat(val) {
       
       this.loginForm.get('nom');
       this.loginForm.get('prenom');
-      this.loginForm.get('classes');
+      // this.loginForm.get('classes');
      
 
     } else {
@@ -99,7 +107,7 @@ getEleveByMat(val) {
       this.classes = '!!!!Nada';
       this.loginForm.get('nom').enable();
       this.loginForm.get('prenom').enable();
-      this.loginForm.get('classes').enable();
+      // this.loginForm.get('classes').enable();
 
     }
   },
@@ -109,4 +117,6 @@ getEleveByMat(val) {
   });
   
 }
+
+
 }

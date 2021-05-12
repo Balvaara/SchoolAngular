@@ -30,4 +30,12 @@ export class UsersService {
     return this.HttpClient.put<any>(`${environment.myApi}/api/edite/${id}`,JSON.stringify(data));
 
   }
+  editeProfil(id:number,data){
+    return this.HttpClient.put<any>(`${environment.myApi}/api/editeprofil/${id}`,JSON.stringify(data));
+  }
+
+  UserCon(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/userCon`);
+
+  }
 }

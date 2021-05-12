@@ -34,6 +34,22 @@
             </div>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-row">
+                        <div class="form-group col-md-6">
+                            
+                            <div class="form-group form-group-default" >
+                                <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="session"  [ngClass]="{ 'is-invalid': submitted && f.session.errors }">
+                                    <option value="">&nbsp;</option>
+                                    <option *ngFor=" let ses of allsession " value="{{ses.id}}">
+                                        {{ses.libAnn}}
+                                    </option>
+                                    <div *ngIf="submitted && f.session.errors" class="invalid-feedback">
+                                        <div *ngIf="f.session.errors.required">L'annee est Obligatoire</div>
+                                    </div>
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez L'anne Scolaire</label>
+                            </div>
+                            
+                        </div>
                     <div class="form-group col-md-6">
                         <div class="form-group form-group-default">
                             <label>Matricule De L'eleve</label>
@@ -43,14 +59,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <div class="form-group form-group-default">
-                            <label>Nom</label>
-                            <input [value]="nom" name="nom" id="Name"   formControlName="nom" type="text" class="form-control" placeholder="Nom" disabled>
-                           
-                        </div>
-                    </div>
-                    
+                  
+              
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -60,36 +70,19 @@
                            
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
+                      <div class="form-group col-md-6">
                         <div class="form-group form-group-default">
-                            <label>Classe</label>
-                            <input [value]="classes" name="classes" id="Name"   formControlName="classes" type="text" class="form-control" placeholder="classes" disabled>
+                            <label>Nom</label>
+                            <input [value]="nom" name="nom" id="Name"   formControlName="nom" type="text" class="form-control" placeholder="Nom" disabled>
                            
                         </div>
                     </div>
+                    
                 </div>
+               
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <div class="form-group form-group-default">
-                            <label><i class="fas fa-hand-holding-usd"></i>Montant</label>
-                            <input id="Name"   formControlName="montant" type="text" class="form-control" placeholder="$$$$$" [ngClass]="{ 'is-invalid': submitted && f.montant.errors }">
-                            <div *ngIf="submitted && f.montanterrors" class="invalid-feedback">
-                                <div *ngIf="f.montanterrors.required">Le Montant est Obligatoire</div>
-                            </div>
-                        </div>
-                        <!-- <div class="form-group form-group-default">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">$</span>
-                            </div>
-                            <input type="text" formControlName="montant" id="Name" class="form-control" aria-label="Amount (to the nearest dollar)">
-                            <div class="input-group-append">
-                                <span class="input-group-text">.00</span>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="form-group col-md-6">
-                        
-                        <div class="form-group form-group-default" >
+                       <div class="form-group form-group-default" >
                             <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="mois"  [ngClass]="{ 'is-invalid': submitted && f.mois.errors }">
                                 <option value="">&nbsp;</option>
                                 <option *ngFor=" let moiss of allmois " value="{{moiss.id}}">
@@ -100,16 +93,21 @@
                                 </div>
                             </select>
                             <label for="selectFloatingLabel" class="placeholder">...Choisissez Le Mois a Paye</label>
-                        </div>
-                        
+                    </div>
+                      </div>  
+                      <div class="form-group col-md-6">
+                    <div class="form-group form-group-default">
+                        <button  [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                        </span>
+                            Submit
+                        </button>
+                    </div>
+                   
                     </div>
                 </div>
-<div class="card-action">
-    <button  [disabled]="loading" class="btn btn-primary">
-        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-        Submit</button>
-</div>
-</form>
+
+            </form>
 </div>
 </div>
 </div>

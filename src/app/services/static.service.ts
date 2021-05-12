@@ -23,7 +23,16 @@ export class StaticService {
   getNbMat(){
     return this.HttpClient.get<any>(`${environment.myApi}/api/nbMat`);
   }
-  // getNbProf(){
-  //   return this.HttpClient.get<any>(`${environment.myApi}/api/listerUsers`);
-  // }
+  getBud(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/somme`);
+  }
+  getNbUser(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/usersCompt`);
+  }
+  getNbProf(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/profs`);
+  }
+  getNbRole(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/rolesCompte`);
+  }
 }

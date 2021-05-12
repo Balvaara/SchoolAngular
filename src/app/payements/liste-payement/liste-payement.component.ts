@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PayementService } from './../../services/payement.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,8 +17,10 @@ export class ListePayementComponent implements OnInit {
   variable1=false
   allpay
   allpayeleve
+  allsession
   constructor( private pay:PayementService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private router: Router) { }
 
   ngOnInit() {
     this.pay.getMois().subscribe(
@@ -27,42 +30,65 @@ export class ListePayementComponent implements OnInit {
        ),
        this.loginForm = this.formBuilder.group({
         matriculeEleve: ['', Validators.required],
-        mois: ['', Validators.required]
+        mois: ['', Validators.required],
+        ses: ['', Validators.required]
     });
-    // this.onChanges();
+    this.pay.getSession().subscribe(
+      data=>{this.allsession=data['hydra:member'];
+       console.log(data);
+    }                                                                       
+       )
+       
+    this.onChanges();
     //  this.onChanges1();
   
 
   }
  
-  // onChanges(): void {
+  onChanges(): void {
  
-  //   this.loginForm.get('moi').valueChanges.subscribe(val => {
+      this.loginForm.get('matriculeEleve').valueChanges.subscribe(val => {
+    
+    if (this.loginForm.value.matriculeEleve) {
+      
+      // console.log(this.loginForm.value.matriculeEleve)
+
+      this.loginForm.get('mois').disable();
+    }else{
+    this.loginForm.get('mois').enable();
+    }
+     });
+  }
+  
+  // onChanges1(): void {
+ 
+  //   this.loginForm.get('mois').valueChanges.subscribe(val => {
   
   //  if (this.loginForm.value.mois) {
-  //   console.log(this.loginForm.value.mois)
+  //   // console.log(this.loginForm.value.mois)
   //   this.loginForm.get('matriculeEleve').disable();
+  //  }else{
+  //  this.loginForm.get('matriculeEleve').enable();
   //  }
        
 
-  //       // this.loginForm.get('mois').enable();
+        
  
   //    });
   // }
-  
   get f() { return this.loginForm.controls; }
   onSubmit() {
     this.variable=false
     this.variable1=true
     if (this.loginForm.value.mois) {
      
-  this.pay.getPayMois(this.loginForm.value.mois).subscribe(
+  this.pay.getPayMois(this.loginForm.value.mois,this.loginForm.value.ses).subscribe(
     data=>{this.allpay=data;
    console.log(data);
   }                                                                       
      )
     }if(this.loginForm.value.matriculeEleve){
-      this.pay.getPayEl(this.loginForm.value.matriculeEleve).subscribe(
+      this.pay.getPayEl(this.loginForm.value.matriculeEleve,this.loginForm.value.ses).subscribe(
         data=>{this.allpay=data;
       console.log(data);
       }                                                                       
@@ -75,5 +101,6 @@ export class ListePayementComponent implements OnInit {
 retour(){
   this.variable=true
   this.variable1=false
+  this.router.navigate(['default/liste_payement']);
 }
 }
