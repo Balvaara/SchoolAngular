@@ -1,3 +1,10 @@
+import { ListSerieComponent } from './series/list-serie/list-serie.component';
+import { AjoutSerieComponent } from './series/ajout-serie/ajout-serie.component';
+import { AjoutProfComponent } from './professeurs/ajout-prof/ajout-prof.component';
+import { AjoutClasseComponent } from './classes/ajout-classe/ajout-classe.component';
+import { VerifinoteComponent } from './notes/verifinote/verifinote.component';
+import { AjoutnoteComponent } from './notes/ajoutnote/ajoutnote.component';
+import { ExamenComponent } from './examen/examen.component';
 import { ListePayementComponent } from './payements/liste-payement/liste-payement.component';
 import { AjoutPyementComponent } from './payements/ajout-pyement/ajout-pyement.component';
 import { StaticComponent } from './static/static/static.component';
@@ -9,6 +16,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { ListClasseComponent } from './classes/list-classe/list-classe.component';
+import { AjoutMatComponent } from './matieres/ajout-mat/ajout-mat.component';
+import { ListMatComponent } from './matieres/list-mat/list-mat.component';
+import { ListProfComponent } from './professeurs/list-prof/list-prof.component';
+import { AjoutNivComponent } from './niveaux/ajout-niv/ajout-niv.component';
+import { ListNivComponent } from './niveaux/list-niv/list-niv.component';
 
 
 const routes: Routes = [
@@ -21,7 +34,21 @@ const routes: Routes = [
     { path: 'lister_user', component:ListerUserComponent},
     { path: 'static', component: StaticComponent },
     { path: 'payement', component: AjoutPyementComponent },
-    { path: 'liste_payement', component: ListePayementComponent }
+    { path: 'liste_payement', component: ListePayementComponent },
+    { path: 'menu', component: ExamenComponent },
+    { path: 'ajouter_note', component: AjoutnoteComponent },
+    { path: 'lister_note', component: VerifinoteComponent },
+    { path: 'ajout_classe', component: AjoutClasseComponent },
+    { path: 'lister_classe', component: ListClasseComponent },
+    { path: 'ajout_matiere', component: AjoutMatComponent },
+    { path: 'lister_matiere', component: ListMatComponent },
+    { path: 'ajout_prof', component: AjoutProfComponent },
+    { path: 'lister_prof', component: ListProfComponent },
+    { path: 'ajout_serie', component: AjoutSerieComponent },
+    { path: 'lister_serie', component: ListSerieComponent },
+    { path: 'ajout_niv', component: AjoutNivComponent },
+    { path: 'lister_niv', component: ListNivComponent },
+
   ]
 },
 { path: '**', component: NotfoundComponent },

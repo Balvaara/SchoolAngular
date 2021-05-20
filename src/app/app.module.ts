@@ -23,6 +23,20 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { StaticComponent } from './static/static/static.component';
 import { AjoutPyementComponent } from './payements/ajout-pyement/ajout-pyement.component';
 import { ListePayementComponent } from './payements/liste-payement/liste-payement.component';
+import { ExamenComponent } from './examen/examen.component';
+import { AjoutnoteComponent } from './notes/ajoutnote/ajoutnote.component';
+import { VerifinoteComponent } from './notes/verifinote/verifinote.component';
+
+import { AjoutProfComponent } from './professeurs/ajout-prof/ajout-prof.component';
+import { ListProfComponent } from './professeurs/list-prof/list-prof.component';
+import { ListMatComponent } from './matieres/list-mat/list-mat.component';
+import { AjoutMatComponent } from './matieres/ajout-mat/ajout-mat.component';
+import { ListSerieComponent } from './series/list-serie/list-serie.component';
+import { AjoutSerieComponent } from './series/ajout-serie/ajout-serie.component';
+import { ListNivComponent } from './niveaux/list-niv/list-niv.component';
+import { AjoutNivComponent } from './niveaux/ajout-niv/ajout-niv.component';
+import { ListClasseComponent } from './classes/list-classe/list-classe.component';
+import { AjoutClasseComponent } from './classes/ajout-classe/ajout-classe.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +53,19 @@ import { ListePayementComponent } from './payements/liste-payement/liste-payemen
     StaticComponent,
     AjoutPyementComponent,
     ListePayementComponent,
+    ExamenComponent,
+    AjoutnoteComponent,
+    VerifinoteComponent,  
+    AjoutProfComponent,
+    ListProfComponent,
+    ListMatComponent,
+    AjoutMatComponent,
+    ListSerieComponent,
+    AjoutSerieComponent,
+    ListNivComponent,
+    AjoutNivComponent,
+    ListClasseComponent,
+    AjoutClasseComponent,
   ],
   imports: [
     BrowserModule,

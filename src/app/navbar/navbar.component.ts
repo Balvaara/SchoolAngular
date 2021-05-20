@@ -41,7 +41,7 @@ variable : any = false;
     this.user.UserCon().subscribe(
       data=>{ 
         this.alluser=data;
-        console.log(data)
+        // console.log(data)
       }
     )
     this.onChanges();
@@ -66,7 +66,7 @@ variable : any = false;
         const user = data ;
         this.idmod =user.id;
         this.username = user.username;
-        this.password =user.password;
+        this.password = user.password;
         this.nomComplet =user.nomComplet;
         
         this.loginForm.get('username').enable();
@@ -130,18 +130,21 @@ variable : any = false;
           .subscribe(
               data => {
                 alert(JSON.stringify (data["message"]));
-                this.connexion.login(user.username, user.password)
+                this.connexion.login(this.usechange ,this.passwordchange)
             .pipe(first())
             .subscribe(
                 data => {
                   
                     this.router.navigate(['default/static']);
-                },
+                    this.user.UserCon().subscribe(
+                      data=>{ 
+                        this.alluser=data;
+                        // console.log(data)
+                      }
+                    )
+                }
                 
-            error => {
-              alert('Username or password is incorrect')                                                                               
-                this.loading = false;
-            });
+            );
               },
               
               error => {

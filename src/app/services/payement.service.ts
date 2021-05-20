@@ -36,4 +36,13 @@ payement:Payement
   getClasse(ses,mat){
     return this.HttpClient.get<any>(`${environment.myApi}/api/getClasse/${ses},${mat}`);
   }
+  getSems(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/semestres`);
+  }
+  getType(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/type_notes`);
+  }
+  getMatCl(cl:any){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/cherche_mats/${cl}`);
+  } 
 }
