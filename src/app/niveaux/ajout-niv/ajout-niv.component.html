@@ -1,1 +1,60 @@
-<p>ajout-niv works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="page-header">
+                    <h4 class="page-title">Niveau</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <p >
+                                <i class="flaticon-home"></i>
+                            </p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Niveau</p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Ajouter Un Niveau</p>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="box-title">
+                    <i class="icon-arrow-right" ></i>Inserer  Un Niveau 
+                    <i class="fa fa-school" ></i></h3>
+                 
+            </div>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/lister_niv" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Liste Niveaux</a>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="Enregistrer()">
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <div class="form-group form-group-default">
+                            <label> Libelle</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.libelleniveau.errors }" formControlName="libelleniveau" type="text" class="form-control" placeholder="Libelle Svp">
+                            <div *ngIf="submitted && f.libelleniveau.errors" class="invalid-feedback">
+                                <div *ngIf="f.libelleniveau.errors.required">Libelle est Obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                            <div class="form-group form-group-default">
+                                <button  [disabled]="loading" class="btn btn-primary" >
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                                </span>
+                                    Submit
+                                </button>
+                            </div>
+                    </div>
+             </div>
+            </form>
+</div>
+</div>
+</div>

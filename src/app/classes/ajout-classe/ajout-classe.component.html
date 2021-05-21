@@ -32,32 +32,84 @@
             <div class="ml-md-auto py-4 py-md-2">
                 <a href="" routerLink="/default/lister_classe" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Liste Classe</a>
             </div>
-            <form [formGroup]="loginForm" >
+            <form [formGroup]="loginForm" (ngSubmit)="Enregistrer()">
                 <div class="form-row">
-
                     <div class="form-group col-md-4">
                         <div class="form-group form-group-default">
                             <label>Code Classe</label>
-                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.codeclasse.errors }" formControlName="codeclasse" type="text" class="form-control" placeholder="Matricule Svp">
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.codeclasse.errors }" formControlName="codeclasse" type="text" class="form-control" placeholder="Code Classe Svp">
                             <div *ngIf="submitted && f.codeclasse.errors" class="invalid-feedback">
-                                <div *ngIf="f.codeclasse.errors.required">Matricule est Obligatoire</div>
+                                <div *ngIf="f.codeclasse.errors.required">Code Classe est Obligatoire</div>
                             </div>
                         </div>
                     </div>
                      <div class="form-group col-md-4">
                         <div class="form-group form-group-default">
                             <label>Libelle  De La Classe</label>
-                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.libelleclasse.errors }" formControlName="libelleclasse" type="text" class="form-control" placeholder="Matricule Svp">
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.libelleclasse.errors }" formControlName="libelleclasse" type="text" class="form-control" placeholder="Libelle Classe Svp">
                             <div *ngIf="submitted && f.libelleclasse.errors" class="invalid-feedback">
-                                <div *ngIf="f.libelleclasse.errors.required">Matricule est Obligatoire</div>
+                                <div *ngIf="f.libelleclasse.errors.required">Libelle Classe est Obligatoire</div>
+                            </div>
+                        </div>
+                     </div>
+                    
+                        <div class="form-group col-md-4">
+                            
+                            <div class="form-group form-group-default" >
+                                <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="niveaux"  [ngClass]="{ 'is-invalid': submitted && f.niveaux.errors }">
+                                    <option value="">&nbsp;</option>
+                                    <option *ngFor=" let niv of allniv " value="{{niv.id}}">
+                                        {{niv.libelleniveau}}
+                                    </option>
+                                    <div *ngIf="submitted && f.niveaux.errors" class="invalid-feedback">
+                                        <div *ngIf="f.niveaux.errors.required">Le Niveau est Obligatoire</div>
+                                    </div>
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez Un Niveau</label>
+                            </div>
+                            
+                        </div>
+                 </div>
+                <div class="form-row">
+                         <div class="form-group col-md-4">
+                            
+                            <div class="form-group form-group-default" >
+                                <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="series"  [ngClass]="{ 'is-invalid': submitted && f.series.errors }">
+                                    <option value="">&nbsp;</option>
+                                    <option *ngFor=" let ser of allser " value="{{ser.id}}">
+                                        {{ser.libelleserie}}
+                                    </option>
+                                    <div *ngIf="submitted && f.series.errors" class="invalid-feedback">
+                                        <div *ngIf="f.series.errors.required">L'annee est Obligatoire</div>
+                                    </div>
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez L'anne Scolaire</label>
+                            </div>
+                         </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Montant D'inscription</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.montantIns.errors }" formControlName="montantIns" type="text" class="form-control" placeholder="Code Classe Svp">
+                            <div *ngIf="submitted && f.montantIns.errors" class="invalid-feedback">
+                                <div *ngIf="f.montantIns.errors.required">Veuillez Donner Le Montant D'inscription</div>
+                            </div>
+                        </div>
+                     </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Montant Mensuele</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.montantMens.errors }" formControlName="montantMens" type="text" class="form-control" placeholder="Code Classe Svp">
+                            <div *ngIf="submitted && f.montantMens.errors" class="invalid-feedback">
+                                <div *ngIf="f.montantMens.errors.required">Veuillez Donner Le Montant Mensuele</div>
                             </div>
                         </div>
                     </div>
-                    
-             
+                </div>
+                <div class="form-row">
+                        
                     <div class="form-group col-md-4">
                             <div class="form-group form-group-default">
-                                <button  [disabled]="loading" class="btn btn-primary" (click)="Enregistrer()">
+                                <button  [disabled]="loading" class="btn btn-primary" >
                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
                                 </span>
                                     Submit

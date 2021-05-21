@@ -1,1 +1,69 @@
-<p>ajout-serie works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="page-header">
+                    <h4 class="page-title">Serie</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <p >
+                                <i class="flaticon-home"></i>
+                            </p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Serie</p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Ajouter Une Serie</p>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="box-title">
+                    <i class="icon-arrow-right" ></i>Inserer  Une Serie 
+                    <i class="fa fa-school" ></i></h3>
+                 
+            </div>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/lister_serie" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Liste Series</a>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="Enregistrer()">
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <div class="form-group form-group-default">
+                            <label>Code</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.codeserie.errors }" formControlName="codeserie" type="text" class="form-control" placeholder="Code Serie Svp">
+                            <div *ngIf="submitted && f.codeserie.errors" class="invalid-feedback">
+                                <div *ngIf="f.codeserie.errors.required">Code est Obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-group form-group-default">
+                            <label>Libelle</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.libelleserie.errors }" formControlName="libelleserie" type="text" class="form-control" placeholder="Libelle Serie Svp">
+                            <div *ngIf="submitted && f.libelleserie.errors" class="invalid-feedback">
+                                <div *ngIf="f.libelleserie.errors.required">Libelle est Obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                            <div class="form-group form-group-default">
+                                <button  [disabled]="loading" class="btn btn-primary" >
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                                </span>
+                                    Submit
+                                </button>
+                            </div>
+                    </div>
+             </div>
+            </form>
+</div>
+</div>
+</div>
