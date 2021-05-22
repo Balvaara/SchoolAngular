@@ -18,6 +18,7 @@ export class AjoutClasseComponent implements OnInit {
   loading = false;
   allser
   allniv
+  libelleserie=''
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private classe:ClasseService,
@@ -35,6 +36,7 @@ export class AjoutClasseComponent implements OnInit {
       niveaux: ['', Validators.required],
 
   });
+
   this.ser.getSerie().subscribe(
     data=>{this.allser=data['hydra:member'];
       // console.log(data);
@@ -45,8 +47,29 @@ export class AjoutClasseComponent implements OnInit {
         // console.log(data);
     }                                                                       
        )
+      //  this.onChanges();
   }
   get f() { return this.loginForm.controls; }
+  //auto remplissage
+  // onChanges(): void {
+  //   this.loginForm.get('niv').valueChanges.subscribe(val => {
+  //   // console.log(val);  
+     
+  //     this.getEleveByMat(val);
+  //   });
+  // }
+  // getEleveByMat(val) {
+    
+  //     if (val) {
+  //       this.loginForm.get('series').disable;
+  //      console.log(val);
+   
+        
+  //     } 
+  // }
+  
+  
+ 
   Enregistrer() {
     const classes={
       codeclasse:this.loginForm.value.codeclasse,

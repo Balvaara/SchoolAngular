@@ -1,1 +1,63 @@
-<p>ajout-mat works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="page-header">
+                    <h4 class="page-title">Matiere</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <p >
+                                <i class="fas fa-book-reader"></i>
+                            </p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Matiere</p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Ajouter Une Matiere</p>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="box-title">
+                    <i class="icon-arrow-right" ></i>Ajouter Une Matiere 
+                    <i class="fas fa-book-reader" ></i></h3>
+                 
+            </div>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/lister_matiere" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Liste Matieres</a>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="Enregistrer()">
+              
+                <div class="form-row">
+                       <div class="form-group col-md-6">
+                        <div class="form-group form-group-default">
+                            <label>Libelle</label>
+                            <input id="Name" [ngClass]="{ 'is-invalid': submitted && f.libellemat.errors }" formControlName="libellemat" type="text" class="form-control" placeholder="Libelle Svp">
+                            <div *ngIf="submitted && f.libellemat.errors" class="invalid-feedback">
+                                <div *ngIf="f.libellemat.errors.required"> Le Libelle est Obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group col-md-6">
+                        <div class="form-group form-group-default">
+                            <button  [disabled]="loading" class="btn btn-primary">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                            </span>
+                                Submit
+                            </button>
+                        </div>
+                    
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -37,6 +37,7 @@ import { ListNivComponent } from './niveaux/list-niv/list-niv.component';
 import { AjoutNivComponent } from './niveaux/ajout-niv/ajout-niv.component';
 import { ListClasseComponent } from './classes/list-classe/list-classe.component';
 import { AjoutClasseComponent } from './classes/ajout-classe/ajout-classe.component';
+import { AjoutClasseMatComponent } from './classesMat/ajout-classe-mat/ajout-classe-mat.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { AjoutClasseComponent } from './classes/ajout-classe/ajout-classe.compon
     AjoutNivComponent,
     ListClasseComponent,
     AjoutClasseComponent,
+    AjoutClasseMatComponent,
   ],
   imports: [
     BrowserModule,

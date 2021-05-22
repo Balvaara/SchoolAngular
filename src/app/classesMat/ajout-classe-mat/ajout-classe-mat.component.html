@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="page-header">
+                    <h4 class="page-title">Matiere/Classe</h4>
+                    
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <p >
+                                <i class="flaticon-home"></i>
+                            </p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Matiere/Classe</p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Ajouter Une Matiere Dans Une Classe </p>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="box-title">
+                    <i class="icon-arrow-right" ></i>Ajouter Une Matiere Dans Une Classe 
+                   <i class="fas fa-book-reader" ></i>
+                    <i class="fa fa-school" ></i></h3>
+                 
+            </div>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/lister_classe" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Liste Classe</a>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="Enregistrer()">
+                
+                <div class="form-row">
+                         <div class="form-group col-md-4">
+                            
+                            <div class="form-group form-group-default" >
+                                <select  class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="matieres"  [ngClass]="{ 'is-invalid': submitted && f.matieres.errors }">
+                                    <option value="">&nbsp;</option>
+                                    <option *ngFor=" let niv of allmat " value="{{niv.id}}">
+                                        {{niv.libellemat}}
+                                    </option>
+                                    <div *ngIf="submitted && f.matieres.errors" class="invalid-feedback">
+                                        <div *ngIf="f.matieres.errors.required">La Matiere est Obligatoire</div>
+                                    </div>
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez Une Matiere...</label>
+                            </div>
+                          </div>
+                   <div class="form-group col-md-4">
+                            
+                            <div class="form-group form-group-default" >
+                                <select  class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="classes"  [ngClass]="{ 'is-invalid': submitted && f.classes.errors }">
+                                    <option value="">&nbsp;</option>
+                                    <option *ngFor=" let niv of allcl" value="{{niv.id}}">
+                                        {{niv.libelleclasse}}
+                                    </option>
+                                    <div *ngIf="submitted && f.classes.errors" class="invalid-feedback">
+                                        <div *ngIf="f.classes.errors.required">La Classe est Obligatoire</div>
+                                    </div>
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez Une Classe...</label>
+                            </div>
+                            
+                    </div>
+                 
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Coefficient </label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.coef.errors }" formControlName="coef" type="text" class="form-control" placeholder="Coefficient Svp">
+                            <div *ngIf="submitted && f.coef.errors" class="invalid-feedback">
+                                <div *ngIf="f.coef.errors.required">Veuillez Donner Le Coefficient </div>
+                            </div>
+                        </div>
+                    </div>
+              
+            
+                        
+                    <div class="form-group col-md-4">
+                            <div class="form-group form-group-default">
+                                <button  [disabled]="loading" class="btn btn-primary" >
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                                </span>
+                                    Submit
+                                </button>
+                            </div>
+                    </div>
+             </div>
+            </form>
+</div>
+</div>
+</div>

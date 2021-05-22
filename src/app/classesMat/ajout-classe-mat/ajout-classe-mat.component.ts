@@ -1,37 +1,57 @@
 import { first } from 'rxjs/operators';
-import { AlertService } from './../../services/alert.service';
 import { MatiereService } from './../../services/matiere.service';
+import { ClasseService } from './../../services/classe.service';
 import { Router } from '@angular/router';
+import { AlertService } from './../../services/alert.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ClasseMatService } from 'src/app/services/classe-mat.service';
 
 @Component({
-  selector: 'app-ajout-mat',
-  templateUrl: './ajout-mat.component.html',
-  styleUrls: ['./ajout-mat.component.scss']
+  selector: 'app-ajout-classe-mat',
+  templateUrl: './ajout-classe-mat.component.html',
+  styleUrls: ['./ajout-classe-mat.component.scss']
 })
-export class AjoutMatComponent implements OnInit {
+export class AjoutClasseMatComponent implements OnInit {
   loginForm: FormGroup
   submitted = false;
   loading = false;
+  allcl
+  allmat
   constructor(private formBuilder: FormBuilder,
     private router: Router,
+    private classe:ClasseService,
     private mat:MatiereService,
+    private clmt:ClasseMatService,
     private alertService: AlertService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      libellemat: ['', Validators.required],
+      matieres: ['', Validators.required],
+      classes: ['', Validators.required],
+      coef: ['', Validators.required],
+      
 
   });
-  }
+  this.classe.getClasse().subscribe(
+    data=>{this.allcl=data['hydra:member'];
+      // console.log(data);
+  }                                                                       
+     ),
+     this.mat.getMatiere().subscribe(
+      data=>{this.allmat=data['hydra:member'];
+        // console.log(data);
+    }                                                                       
+       )
 
+  }
   get f() { return this.loginForm.controls; }
 
   Enregistrer() {
     const classes_matiere={
-      libellemat:this.loginForm.value.libellemat,
-     
+      coef:parseInt(this.loginForm.value.coef),
+      matieres:`api/matieres/${this.loginForm.value.matieres}`,
+      classes:`api/classes/${this.loginForm.value.classes}`,
      
   }
     this.submitted = true;
@@ -45,7 +65,7 @@ export class AjoutMatComponent implements OnInit {
     }
 
     this.loading = true;
-    this.mat.Isersion(classes_matiere)
+    this.clmt.Isersion(classes_matiere)
     .pipe(first())
     .subscribe(
         data => {
@@ -59,4 +79,5 @@ export class AjoutMatComponent implements OnInit {
         });
    
 }
+
 }

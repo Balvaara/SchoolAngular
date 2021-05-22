@@ -1,3 +1,4 @@
+import { AjoutClasseMatComponent } from './classesMat/ajout-classe-mat/ajout-classe-mat.component';
 import { ListSerieComponent } from './series/list-serie/list-serie.component';
 import { AjoutSerieComponent } from './series/ajout-serie/ajout-serie.component';
 import { AjoutProfComponent } from './professeurs/ajout-prof/ajout-prof.component';
@@ -48,6 +49,7 @@ const routes: Routes = [
     { path: 'lister_serie', component: ListSerieComponent },
     { path: 'ajout_niv', component: AjoutNivComponent },
     { path: 'lister_niv', component: ListNivComponent },
+    {path: 'ajout_classe_mat', component: AjoutClasseMatComponent },
 
   ]
 },

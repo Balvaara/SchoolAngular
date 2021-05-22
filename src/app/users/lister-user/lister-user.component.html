@@ -70,20 +70,20 @@
                       </label>
                     </ng-template>
                 </td>
-                <td><button type="button" class="btn btn-outline-primary"
+                <td><button type="button" data-toggle="tooltip" title=""
+                 class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"
                      data-toggle="modal" data-target="#exampleModalLongM"
-                     (click)="editUser(user.id)" ><span class="input-group-addon">
-                         <i class="fa fa-pen fa-fw"></i></span>Mod</button></td>
-                <td><button type="button" class="btn btn-outline-danger"
+                     (click)="editUser(user.id)" ><i class="fa fa-edit"></i>
+                     </button></td>
+                <td><button type="button"  data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                 data-original-title="Remove"
                   mwlConfirmationPopover
                   [popoverTitle]="popoverTitle"
                   [popoverMessage]="popoverMessage"
                   placement="left"
                   (confirm)="confirmClicked = Action(user.id)"
                   (cancel)="cancelClicked = true"  >
-                  <span class="input-group-addon">
-                      <i class="fa fa-trash fa-fw"></i>
-                </span>Supp</button>
+                   <i class="fa fa-times"></i></button>
                 </td>
                 </tr>
                

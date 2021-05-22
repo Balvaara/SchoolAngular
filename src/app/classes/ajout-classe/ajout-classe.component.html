@@ -56,7 +56,7 @@
                         <div class="form-group col-md-4">
                             
                             <div class="form-group form-group-default" >
-                                <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="niveaux"  [ngClass]="{ 'is-invalid': submitted && f.niveaux.errors }">
+                                <select  class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="niveaux"  [ngClass]="{ 'is-invalid': submitted && f.niveaux.errors }">
                                     <option value="">&nbsp;</option>
                                     <option *ngFor=" let niv of allniv " value="{{niv.id}}">
                                         {{niv.libelleniveau}}
@@ -74,22 +74,20 @@
                          <div class="form-group col-md-4">
                             
                             <div class="form-group form-group-default" >
-                                <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="series"  [ngClass]="{ 'is-invalid': submitted && f.series.errors }">
+                                <select  class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="series"  >
                                     <option value="">&nbsp;</option>
                                     <option *ngFor=" let ser of allser " value="{{ser.id}}">
                                         {{ser.libelleserie}}
                                     </option>
-                                    <div *ngIf="submitted && f.series.errors" class="invalid-feedback">
-                                        <div *ngIf="f.series.errors.required">L'annee est Obligatoire</div>
-                                    </div>
+                                   
                                 </select>
-                                <label for="selectFloatingLabel" class="placeholder">...Choisissez L'anne Scolaire</label>
+                                <label for="selectFloatingLabel" class="placeholder">...La Serie Est Facultative...</label>
                             </div>
                          </div>
                     <div class="form-group col-md-4">
                         <div class="form-group form-group-default">
                             <label>Montant D'inscription</label>
-                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.montantIns.errors }" formControlName="montantIns" type="text" class="form-control" placeholder="Code Classe Svp">
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.montantIns.errors }" formControlName="montantIns" type="text" class="form-control" placeholder="Montant d'inscription de la Classe Svp">
                             <div *ngIf="submitted && f.montantIns.errors" class="invalid-feedback">
                                 <div *ngIf="f.montantIns.errors.required">Veuillez Donner Le Montant D'inscription</div>
                             </div>
@@ -98,7 +96,7 @@
                     <div class="form-group col-md-4">
                         <div class="form-group form-group-default">
                             <label>Montant Mensuele</label>
-                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.montantMens.errors }" formControlName="montantMens" type="text" class="form-control" placeholder="Code Classe Svp">
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.montantMens.errors }" formControlName="montantMens" type="text" class="form-control" placeholder="Montant Mensuele de la Classe Svp">
                             <div *ngIf="submitted && f.montantMens.errors" class="invalid-feedback">
                                 <div *ngIf="f.montantMens.errors.required">Veuillez Donner Le Montant Mensuele</div>
                             </div>

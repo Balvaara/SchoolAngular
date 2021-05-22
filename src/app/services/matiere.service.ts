@@ -5,13 +5,13 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ClasseService {
+export class MatiereService {
 
   constructor(private HttpClient:HttpClient) { }
-  Isersion(classe){
-    return this.HttpClient.post<any>(`${environment.myApi}/api/addclasse`,classe);
+  Isersion(matiere){
+    return this.HttpClient.post<any>(`${environment.myApi}/api/addMatiere`,matiere);
   }
-  getClasse(){
-    return this.HttpClient.get<any>(`${environment.myApi}/api/classes`);
+  getMatiere(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/matieres`);
   }
 }
