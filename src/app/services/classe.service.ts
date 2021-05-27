@@ -14,4 +14,19 @@ export class ClasseService {
   getClasse(){
     return this.HttpClient.get<any>(`${environment.myApi}/api/classes`);
   }
+  getAllClasse(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/listeClasse`);
+  }
+  modifier(id:number,data){
+    return this.HttpClient.put<any>(`${environment.myApi}/api/editeClasse/${id}`,JSON.stringify(data));
+  }
+  edite(id:number){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/classes/${id}`);
+  }
+  suppression(id:number){
+    return this.HttpClient.delete(`${environment.myApi}/api/deleteClasse/${id}`);
+  }
 }
+
+  
+

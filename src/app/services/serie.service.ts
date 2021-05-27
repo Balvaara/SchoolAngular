@@ -16,4 +16,16 @@ export class SerieService {
   getSerie(){
     return this.HttpClient.get<any>(`${environment.myApi}/api/series`);
   }
+  getAllSerie(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/listeSerie`);
+  }
+  modifier(id:number,data){
+    return this.HttpClient.put<any>(`${environment.myApi}/api/editeSerie/${id}`,JSON.stringify(data));
+  }
+  edite(id:number){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/series/${id}`);
+  }
+  suppression(id:number){
+    return this.HttpClient.delete(`${environment.myApi}/api/deleteSerie/${id}`);
+  }
 }

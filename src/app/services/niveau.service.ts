@@ -16,4 +16,16 @@ export class NiveauService {
   getNiv(){
     return this.HttpClient.get<any>(`${environment.myApi}/api/niveaux`);
   }
+  getAllNiv(){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/listeNiveau`);
+  }
+  modifier(id:number,data){
+    return this.HttpClient.put<any>(`${environment.myApi}/api/editeNiveau/${id}`,JSON.stringify(data));
+  }
+  edite(id:number){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/niveaux/${id}`);
+  }
+  suppression(id:number){
+    return this.HttpClient.delete(`${environment.myApi}/api/deleteNiveau/${id}`);
+  }
 }
