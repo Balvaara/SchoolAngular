@@ -1,3 +1,4 @@
+import { InscrireComponent } from './inscription/inscrire/inscrire.component';
 import { AjoutClasseMatComponent } from './classesMat/ajout-classe-mat/ajout-classe-mat.component';
 import { ListSerieComponent } from './series/list-serie/list-serie.component';
 import { AjoutSerieComponent } from './series/ajout-serie/ajout-serie.component';
@@ -23,6 +24,7 @@ import { ListMatComponent } from './matieres/list-mat/list-mat.component';
 import { ListProfComponent } from './professeurs/list-prof/list-prof.component';
 import { AjoutNivComponent } from './niveaux/ajout-niv/ajout-niv.component';
 import { ListNivComponent } from './niveaux/list-niv/list-niv.component';
+import { ListeEleveComponent } from './inscription/liste-eleve/liste-eleve.component';
 
 
 const routes: Routes = [
@@ -50,6 +52,10 @@ const routes: Routes = [
     { path: 'ajout_niv', component: AjoutNivComponent },
     { path: 'lister_niv', component: ListNivComponent },
     {path: 'ajout_classe_mat', component: AjoutClasseMatComponent },
+    {path: 'inscrire', component: InscrireComponent },
+    {path: 'lister_eleve', component: ListeEleveComponent },
+    
+    
 
   ]
 },

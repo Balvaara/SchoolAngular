@@ -1,0 +1,182 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="page-header">
+                    <h4 class="page-title">Inscription</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <p >
+                                <i class="fas fa-user-tie"></i>
+                            </p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Inscription</p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p > Inscription</p>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="box-title">
+                    <i class="icon-arrow-right" ></i> Inscription 
+                    <i class="fas fa-user-tie" ></i></h3>
+                 
+            </div>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/lister_prof" class="btn btn-primary btn-round"> <i class="fa fa-table fa-fw"></i>Liste Des Iscrits</a>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                
+                <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <div class="form-group form-group-default">
+                                <label>Numero Inscription</label>
+                                <input [value]="numIns" name="numIns" id="Name" formControlName="numIns" type="text" class="form-control" placeholder="Matricule Svp">
+                            
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="form-group form-group-default">
+                                <label>Prenom</label>
+                                <input [value]="prenom" name="prenom"  id="Name" formControlName="prenom" type="text" class="form-control" placeholder="Prenom Svp">
+                            
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                                <div class="form-group form-group-default">
+                                    <label>Nom</label>
+                                    <input  id="Name" [value]="nom" name="nom" formControlName="nom" type="text" class="form-control" placeholder="Nom Svp">
+                                
+                                </div>
+                        </div>
+                 
+                </div>
+
+              <div class="form-row">
+                    <div class="form-group col-md-4">
+                            <div class="form-group form-group-default">
+                                <label>Date De Naissance</label>
+                                <input [value]="datenaissance" name="datenaissance" id="Name" formControlName="datenaissance" type="date" class="form-control" >
+                            
+                            </div>
+                    </div>
+                        <div class="form-group col-md-4">
+                            <div class="form-group form-group-default">
+                                <label>Lieu De Naissance</label>
+                             <input [value]="lieunaiss" name="lieunaiss"  id="Name" formControlName="lieunaiss" type="text" class="form-control" placeholder="Lieu Svp">
+                            
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                                 <div class="form-group form-group-default" >
+                                <select  class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="sexe"  >
+                                    <option value="">{{sexe}}</option>
+                                    <option >Masculin</option>
+                                    <option >Fminin</option>
+                                 
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez Un Genre...</label>
+                            </div>
+                        </div>
+              </div>
+
+                <div class="form-row">
+
+                        <div class="form-group col-md-4">
+                            <div class="form-group form-group-default">
+                                <label>Classe</label>
+                                <input [value]="classe" name="classe" readonly id="Name" formControlName="classe" type="text" class="form-control" placeholder="Classe Svp">
+                            
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                                <div class="form-group form-group-default">
+                                    <label>Telephone Titeur</label>
+                                    <input [value]="telp" name="telp"  id="Name" formControlName="telp" type="text" class="form-control" placeholder="+221....">
+                                
+                                </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="form-group form-group-default">
+                                <label>Prenom Titeur</label>
+                                <input [value]="prenomp" name="prenomp" id="Name" formControlName="prenomp" type="text" class="form-control" placeholder="Prenom Titeur Svp">
+                            
+                            </div>
+                        </div>
+                       
+                </div>
+
+                <div class="form-row">
+                 <div class="form-group col-md-4">
+                                <div class="form-group form-group-default">
+                                    <label>Nom Titeur</label>
+                                    <input [value]="nomp" name="nomp"  id="Name" formControlName="nomp" type="text" class="form-control" placeholder="Nom Titeur Svp">
+                                
+                                </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                                <div class="form-group form-group-default">
+                                    <label>Adresse Titeur</label>
+                                    <input [value]="adressep" name="adressep"  id="Name" formControlName="adressep" type="text" class="form-control" placeholder="Adresse Titeur Svp">
+                                
+                                </div>
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                            
+                            <div class="form-group form-group-default" >
+                                <select  class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="classes"  >
+                                    <option value="">&nbsp;</option>
+                                    <option *ngFor=" let cl of allcl" value="{{cl.id}}">
+                                        {{cl.libelleclasse}}
+                                    </option>
+                                   
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez Une Classe...</label>
+                            </div>
+                            
+                        </div>
+                        
+                       
+                       
+                            
+                 </div>           
+                <div class="form-row">    
+                         
+                     <div class="form-group col-md-4">
+                            
+                            <div class="form-group form-group-default" >
+                                <select  class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="session"  >
+                                    <option value="">&nbsp;</option>
+                                    <option *ngFor=" let niv of allsession" value="{{niv.id}}">
+                                        {{niv. 	libAnn}}
+                                    </option>
+                                    
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez Une Session...</label>
+                            </div>
+                            
+                        </div>    
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <button  [disabled]="loading" class="btn btn-primary">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                            </span>
+                                Submit
+                            </button>
+                        </div>
+                    
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

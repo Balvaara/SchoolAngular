@@ -14,4 +14,17 @@ export class ProfService {
   getProf(){
     return this.HttpClient.get<any>(`${environment.myApi}/api/listeProfesseur`);
   }
+
+  suppression(id:number){
+    return this.HttpClient.delete(`${environment.myApi}/api/deleteProf/${id}`);
+  }
+
+  edite(id:number){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/professeurs/${id}`);
+  }
+
+  modifier(id:number,data){
+    return this.HttpClient.put<any>(`${environment.myApi}/api/editeProfesseur/${id}`,JSON.stringify(data));
+
+  }
 }

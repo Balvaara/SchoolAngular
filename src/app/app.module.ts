@@ -38,6 +38,8 @@ import { AjoutNivComponent } from './niveaux/ajout-niv/ajout-niv.component';
 import { ListClasseComponent } from './classes/list-classe/list-classe.component';
 import { AjoutClasseComponent } from './classes/ajout-classe/ajout-classe.component';
 import { AjoutClasseMatComponent } from './classesMat/ajout-classe-mat/ajout-classe-mat.component';
+import { InscrireComponent } from './inscription/inscrire/inscrire.component';
+import { ListeEleveComponent } from './inscription/liste-eleve/liste-eleve.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { AjoutClasseMatComponent } from './classesMat/ajout-classe-mat/ajout-cla
     ListClasseComponent,
     AjoutClasseComponent,
     AjoutClasseMatComponent,
+    InscrireComponent,
+    ListeEleveComponent,
   ],
   imports: [
     BrowserModule,

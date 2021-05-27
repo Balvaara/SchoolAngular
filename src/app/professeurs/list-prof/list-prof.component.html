@@ -70,8 +70,8 @@
                     </td>
                     <td><button type="button" data-toggle="tooltip" title=""
                         class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"
-                        (click)="editCM(profs.id)"   data-toggle="modal"
-                        data-target="#exampleModalLongCM">
+                        (click)="editProf(profs.id)"   data-toggle="modal"
+                        data-target="#exampleModalLongProf">
                         <i class="fa fa-edit"></i></button></td>
                     <td><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
                     data-original-title="Remove"
@@ -96,7 +96,7 @@
      </div>
 </div>
 <div class="container"  *ngIf="variable">
-<div  class="modal fade" id="exampleModalLongCM" tabindex="2" role="dialog" aria-labelledby="exampleModalLongCMTitle" aria-hidden="true" >
+<div  class="modal fade" id="exampleModalLongProf" tabindex="2" role="dialog" aria-labelledby="exampleModalLongProfTitle" aria-hidden="true" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
    
@@ -104,28 +104,77 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="box-title"><i class="icon-arrow-right" ></i>Modifier Un Utilisateur</h3>
+                        <h3 class="box-title"><i class="icon-arrow-right" ></i>Modifier Un Professeur</h3>
                     </div>
                     <form [formGroup]="loginForm" >
+                
+                <div class="form-row">
+                    <div class="form-group col-md-4">
                         <div class="form-group form-group-default">
-                            <label>ID</label>
-                            <input [value]="idmod" name="idmod"  formControlName="id" type="text" class="form-control" id="disableinput" disabled>
-                          
+                            <label>Prenom</label>
+                            <input [value]="prenompr" name="prenompr"  id="Name"  formControlName="prenompr" type="text" class="form-control" placeholder="Prenom Svp">
+                            
                         </div>
-                    <div class="form-group form-group-default">
-                        <label>Coefficient</label>
-                        <input [value]="coef" name="coef" id="Name"  formControlName="coef" type="text" class="form-control">
-                        
                     </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Nom</label>
+                            <input [value]="nompr" name="nompr" id="Name" formControlName="nompr" type="text" class="form-control" placeholder="Nom Svp">
+                            
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Adresse</label>
+                            <input [value]="adressepr" name="adressepr"  id="Name"  formControlName="adressepr" type="text" class="form-control" placeholder="Adresse Svp">
+                           
+                        </div>
+                    </div>
+                 
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Telephone</label>
+                            <input [value]="telpr" name="telpr"  id="Name" formControlName="telpr" type="text" class="form-control" placeholder="+221......">
+                           
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Date De Naissance</label>
+                            <input type="date" [value]="datenaisspr" name="datenaisspr | date:'yyyy-MM-dd' " id="Name"  formControlName="datenaisspr"  class="form-control" >
+                            
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Lieu De Naissance</label>
+                            <input [value]="lieunaisspr" name="lieunaisspr" id="Name" formControlName="lieunaisspr" type="text" class="form-control" placeholder="Lieu De Naissance Svp">
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                       
+                        
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <button  [disabled]="loading" class="btn btn-primary" (click)="Enregistrer()">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                            </span>
+                                Submit
+                            </button>
+                        </div>
+                    
+                    </div>
+                </div>
 
-        <div class="card-action">
-            <button   class="btn btn-primary" (click)="onSubmit()">
-                Submit</button>
-        </div>      
-        </form>
+            </form>
+                    
         </div>
-        </div>
-        </div>
+    </div>
+</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
       </div>
