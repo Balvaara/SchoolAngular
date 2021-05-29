@@ -25,6 +25,8 @@ import { ListProfComponent } from './professeurs/list-prof/list-prof.component';
 import { AjoutNivComponent } from './niveaux/ajout-niv/ajout-niv.component';
 import { ListNivComponent } from './niveaux/list-niv/list-niv.component';
 import { ListeEleveComponent } from './inscription/liste-eleve/liste-eleve.component';
+import { ListeParentComponent } from './inscription/liste-parent/liste-parent.component';
+import { ListeInscritsComponent } from './inscription/liste-inscrits/liste-inscrits.component';
 
 
 const routes: Routes = [
@@ -54,6 +56,8 @@ const routes: Routes = [
     {path: 'ajout_classe_mat', component: AjoutClasseMatComponent },
     {path: 'inscrire', component: InscrireComponent },
     {path: 'lister_eleve', component: ListeEleveComponent },
+    {path: 'lister_parent', component: ListeParentComponent },
+    {path: 'lister_inscrits', component: ListeInscritsComponent },
     
     
 

@@ -107,7 +107,7 @@ export class ListNivComponent implements OnInit {
         
 
     }
-    console.log(nive);
+    // console.log(nive);
      
     this.nivservice.modifier(this.idmod,nive)
           .pipe(first())

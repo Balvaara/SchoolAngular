@@ -52,6 +52,7 @@ export class InscrireComponent implements OnInit {
       nomp:  new FormControl(''),
       adressep:  new FormControl(''),
       matriculeEleve:  new FormControl(''),
+      classe:  new FormControl(''),
       
 
   });
@@ -89,8 +90,8 @@ export class InscrireComponent implements OnInit {
 getEleveByMat(val) {
   this.inscrire.MyInscription(val).subscribe
   (data => {
-    if (data["hydra:member"][0]) {
-      const ins = data["hydra:member"][0] ;
+    if (data) {
+      const ins = data ;
        console.log(ins);
  
       // console.log(data["hydra:member"][0]);
@@ -108,18 +109,18 @@ getEleveByMat(val) {
      this.adressep = ins.eleves.parrents.adressep;
      this.telp = ins.eleves.parrents.telp;
       // this.classes = eleve.classes.libelleclasse;
-
+      this.loginForm.get('nomp').disable();
+      this.loginForm.get('prenomp').disable();
+       this.loginForm.get('adressep').disable();
+       this.loginForm.get('telp').disable();                        
       this.loginForm.get('nom').disable();
       this.loginForm.get('prenom').disable();
       this.loginForm.get('datenaissance').disable();
       this.loginForm.get('lieunaiss').disable();
       this.loginForm.get('sexe').disable();
-       this.loginForm.get('classe').disable();
+       this.loginForm.get('classe').disable();                                                                                                                                                                                                                                      
 
-       this.loginForm.get('nomp').disable();
-       this.loginForm.get('prenomp').disable();
-        this.loginForm.get('adressep').disable();
-        this.loginForm.get('telp').disable();
+      
      
 
     } else {
@@ -146,7 +147,7 @@ getEleveByMat(val) {
   },
   error => {
     console.log(error);
-    console.log();
+    // console.log();
   });
   
 }
@@ -225,6 +226,7 @@ const encien_eleve = {
   session:this.loginForm.value.session,
 
 };
+// console.log(nouveau_eleve)
 
 if (this.loginForm.value.numIns=='') {
 // this.loading = true;
@@ -236,7 +238,7 @@ this.inscrire.IsersionNovEl(nouveau_eleve).subscribe(
      this.route.navigate(['/default/lister_eleve']);
     },
     error => {
-      console.log(error)
+     alert('Erreur')
     }
   );
 } else {
@@ -247,7 +249,10 @@ this.inscrire.IsersionNovEl(nouveau_eleve).subscribe(
       alert(JSON.stringify(data["message"]))
     this.route.navigate(['/default/lister_eleve']);
       // console.log(data);
-      this.loading = false;
+      // this.loading = false;
+    },
+    error => {
+     alert('Erreur')
     });
 
  }

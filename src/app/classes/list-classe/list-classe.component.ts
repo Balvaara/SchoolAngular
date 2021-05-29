@@ -195,7 +195,7 @@ export class ListClasseComponent implements OnInit {
         
 
     }
-    console.log(classe);
+    // console.log(classe);
      
     this.classervice.modifier(this.idmod,classe)
           .pipe(first())

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, DatePipe } from '@angular/common';
 import { AlertComponent } from './components/connexion/alert.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,6 +40,8 @@ import { AjoutClasseComponent } from './classes/ajout-classe/ajout-classe.compon
 import { AjoutClasseMatComponent } from './classesMat/ajout-classe-mat/ajout-classe-mat.component';
 import { InscrireComponent } from './inscription/inscrire/inscrire.component';
 import { ListeEleveComponent } from './inscription/liste-eleve/liste-eleve.component';
+import { ListeParentComponent } from './inscription/liste-parent/liste-parent.component';
+import { ListeInscritsComponent } from './inscription/liste-inscrits/liste-inscrits.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { ListeEleveComponent } from './inscription/liste-eleve/liste-eleve.compo
     AjoutClasseMatComponent,
     InscrireComponent,
     ListeEleveComponent,
+    ListeParentComponent,
+    ListeInscritsComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,6 +93,8 @@ import { ListeEleveComponent } from './inscription/liste-eleve/liste-eleve.compo
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {provide: APP_BASE_HREF, useValue : '/'},
+    DatePipe,
+
   ],
   bootstrap: [AppComponent]
 })

@@ -13,4 +13,7 @@ export class ParentService {
   
     return this.HttpClient.get<any>(`${environment.myApi}/api/parrents?telp=${telp}`);
   }
+  modifier(id:number,data){
+    return this.HttpClient.put<any>(`${environment.myApi}/api/modifparrent/${id}`,JSON.stringify(data));
+  }
 }

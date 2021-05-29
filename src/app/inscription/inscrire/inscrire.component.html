@@ -7,7 +7,7 @@
                     <ul class="breadcrumbs">
                         <li class="nav-home">
                             <p >
-                                <i class="fas fa-user-tie"></i>
+                                <i class="fas fa-feather-alt"></i>
                             </p>
                         </li>
                         <li class="separator">
@@ -30,15 +30,15 @@
                  
             </div>
             <div class="ml-md-auto py-4 py-md-2">
-                <a href="" routerLink="/default/lister_prof" class="btn btn-primary btn-round"> <i class="fa fa-table fa-fw"></i>Liste Des Iscrits</a>
+                <a href="" routerLink="/default/lister_inscrits" class="btn btn-primary btn-round"> <i class="fa fa-table fa-fw"></i>Liste Des Iscrits</a>
             </div>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 
                 <div class="form-row">
                         <div class="form-group col-md-4">
                             <div class="form-group form-group-default">
-                                <label>Numero Inscription</label>
-                                <input [value]="numIns" name="numIns" id="Name" formControlName="numIns" type="text" class="form-control" placeholder="Matricule Svp">
+                                <label>Numero Inscription(Facultatif)</label>
+                                <input [value]="numIns" name="numIns" id="Name" formControlName="numIns" type="text" class="form-control" placeholder="Numero D'Inscription Svp">
                             
                             </div>
                         </div>
