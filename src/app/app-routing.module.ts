@@ -1,3 +1,4 @@
+import { BultinComponent } from './notes/bultin/bultin.component';
 import { InscrireComponent } from './inscription/inscrire/inscrire.component';
 import { AjoutClasseMatComponent } from './classesMat/ajout-classe-mat/ajout-classe-mat.component';
 import { ListSerieComponent } from './series/list-serie/list-serie.component';
@@ -58,6 +59,7 @@ const routes: Routes = [
     {path: 'lister_eleve', component: ListeEleveComponent },
     {path: 'lister_parent', component: ListeParentComponent },
     {path: 'lister_inscrits', component: ListeInscritsComponent },
+    {path: 'bultin', component: BultinComponent },
     
     
 

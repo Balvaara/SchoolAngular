@@ -86,9 +86,9 @@ export class AjoutPyementComponent implements OnInit {
 getEleveByMat(val) {
   this.pay.MyMatricule(val).subscribe
   (data => {
-    if (data["hydra:member"][0]) {
-      const eleve = data["hydra:member"][0] ;
-      // console.log(partner);
+    if (data) {
+      const eleve = data ;
+     console.log(eleve);
  
       // console.log(data["hydra:member"][0]);
       

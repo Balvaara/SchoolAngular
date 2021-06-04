@@ -39,16 +39,16 @@
                       </div>
                     <div class="form-group col-md-3">
                         <div class="form-group form-group-default">
-                            <button  class="btn btn-primary" (click)="Recherche()">
+                            <button [disabled]="loading"  class="btn btn-primary" (click)="Recherche()">
                                 <span class="spinner-border spinner-border-sm mr-1"></span>
-                                <i class="fa fa-search search-icon"></i>Recherche
+                                <i class="fa fa-search search-icon" *ngIf="loading">
+                                </i>Recherche
                             </button>
                         </div>
                     </div>
                 </div>
             
             </form>
-
             <div *ngIf="variable1">
     <div class="input-group">
         <div class="input-group-prepend">
@@ -66,6 +66,7 @@
                 <th scope="col">Coef</th>
                 <th scope="col">Note</th>
                 <th scope="col">Type Note</th>
+                <th scope="col">Semestre</th>
                 <th scope="col">Modifier</th>
                 
             </tr>
@@ -77,7 +78,14 @@
                 <td>{{paye.mats.classeMatieres[0].coef}}</td>
                 <td>{{paye.valeur}}</td>
                 <td>{{paye.typeNote.libtn}}</td>
-                <td>{{paye.typeNote.libtn}}</td>
+                <td>{{paye.sems.codesem}}</td>
+                <td><button type="button" data-toggle="tooltip" title=""
+                        class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"
+                        (click)="editNote(paye.id)"   data-toggle="modal"
+                        data-target="#exampleModalLongNote">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                </td>
               
                 
             
@@ -98,3 +106,52 @@
         </button>
     </div>
 </div> 
+
+
+
+<div class="container"  *ngIf="variable">
+<div  class="modal fade" id="exampleModalLongNote" tabindex="2" role="dialog" aria-labelledby="exampleModalLongNoteTitle" aria-hidden="true" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+   
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="box-title"><i class="icon-arrow-right" ></i>Modifier Une Note</h3>
+                    </div>
+                    <form [formGroup]="loginForm" >
+                
+              
+                <div class="form-row">
+                       
+                       <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Valeur</label>
+                            <input [value]="valeur" name="valeur"  id="Name"  formControlName="valeur" type="text" class="form-control" placeholder="Prenom Svp">
+                            
+                        </div>
+                    </div> 
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <button  [disabled]="loading" class="btn btn-primary" (click)="Enregistrer()">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                            </span>
+                                Submit
+                            </button>
+                        </div>
+                    
+                    </div>
+                </div>
+
+            </form>
+                    
+        </div>
+    </div>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -42,6 +42,8 @@ import { InscrireComponent } from './inscription/inscrire/inscrire.component';
 import { ListeEleveComponent } from './inscription/liste-eleve/liste-eleve.component';
 import { ListeParentComponent } from './inscription/liste-parent/liste-parent.component';
 import { ListeInscritsComponent } from './inscription/liste-inscrits/liste-inscrits.component';
+import { BultinComponent } from './notes/bultin/bultin.component';
+import { NgxPrintModule } from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,7 @@ import { ListeInscritsComponent } from './inscription/liste-inscrits/liste-inscr
     ListeEleveComponent,
     ListeParentComponent,
     ListeInscritsComponent,
+    BultinComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +91,7 @@ import { ListeInscritsComponent } from './inscription/liste-inscrits/liste-inscr
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger', // set defaults here
     }),
+    NgxPrintModule,
    ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

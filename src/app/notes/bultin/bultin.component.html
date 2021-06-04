@@ -1,0 +1,179 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="page-header">
+                    <h4 class="page-title">Bultin de note</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <p >
+                                <i class="flaticon-home"></i>
+                            </p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Bultin</p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Imprimer Un Bultin de note</p>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="box-title">
+                    <i class="icon-arrow-right" ></i>Bultin  De Note  
+                    <i class="fas fa-file-download fa-2x" ></i></h3>
+                 
+            </div>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/menu" class="btn btn-primary btn-round">
+                 <i class="fa fa-plus fa-fw"></i>Menu Examen</a>
+            </div>
+ <form [formGroup]="loginForm" >
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <div class="form-group form-group-default">
+                            <label>Matricule De L'eleve</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.matriculeEleve.errors }" formControlName="matriculeEleve" type="text"[ngClass]="{ 'is-invalid': submitted && f.matriculeEleve.errors }" class="form-control" placeholder="Matricule Svp">
+                            <div *ngIf="submitted && f.matriculeEleve.errors" class="invalid-feedback">
+                                <div *ngIf="f.matriculeEleve.errors.required">Matricule est Obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                       <div class="form-group form-group-default" >
+                            <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="session"  [ngClass]="{ 'is-invalid': submitted && f.session.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let anne of allsession " value="{{anne.id}}">
+                                    {{anne.libAnn}}
+                                </option>
+                                <div *ngIf="submitted && f.session.errors" class="invalid-feedback">
+                                    <div *ngIf="f.session.errors.required">Annee Scolaire est Obligatoire</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Une Annee Scolaire...</label>
+                        </div>
+                    </div> 
+                     <div class="form-group col-md-3">
+                       <div class="form-group form-group-default" >
+                            <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="sems"  [ngClass]="{ 'is-invalid': submitted && f.sems.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let sems of allsems " value="{{sems.id}}">
+                                    {{sems.codesem}}
+                                </option>
+                                <div *ngIf="submitted && f.sems.errors" class="invalid-feedback">
+                                    <div *ngIf="f.sems.errors.required">Le Semestre est Obligatoire</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Le Semestre...</label>
+                        </div>
+                      </div>
+                    <div class="form-group col-md-3">
+                        <div class="form-group form-group-default">
+                            <button [disabled]="loading"  class="btn btn-primary" (click)="Recherche()">
+                               
+                                <i class="fa fa-search search-icon" >
+                                       <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                </i>Recherche
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            
+            </form>
+
+
+ <br>
+          <embed />
+
+     <div class="container"  *ngIf="variable">
+            <fieldset align="center" >
+           
+               <div id = " print-section " > 
+                <section class="flex">
+                  
+                  <table class="table table-bordered" id="dataTable" width="40%" cellspacing="2">
+                  <tr>
+                  <th>Nom Complet</th>
+                  <th>Matricule</th>
+                  <th>Date De Naissance</th>
+                   <th>Classe</th>
+                  </tr>
+                  <tr   >
+                  <td>{{ell.prenom}} {{ell.nom}}</td>
+                    
+                    <td>{{ell.matriculeEleve}}</td>
+                    
+                    <td>{{ell.datenais | date:'dd-MM-yyyy'}}</td>
+                   
+                    <td>{{ell.inscrires[0].classes.libelleclasse}}</td>
+                  </tr>
+                    
+                    
+                  </table>
+                </section>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      
+                      <table class="table table-bordered" id="dataTable" width="40%" cellspacing="1">
+                        <thead>
+                          <tr>
+                            
+                             
+                            <th>Matiiere</th>
+                            <th>Coeff</th>
+                            <th>Valeur</th> 
+                            <th>N*C</th>
+                          
+                            
+                           
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          
+                          <tr *ngFor="let note of notes" >
+                           
+                            
+                            <td>{{note.mats.libellemat}}</td>
+                            <td>{{note.mats.classeMatieres[0].coef}}</td>
+                            <td>{{note.valeur}}</td>
+                            <td>{{note.mats.classeMatieres[0].coef*note.valeur}}</td>
+                          </tr>
+                          <th>Total</th>
+                          <td >{{totalcoef}}</td>
+                          <td>{{totalsome}}</td>
+                          <td>{{totalNS}}</td>
+                         
+
+                          <th>Moyenne</th>
+                          <td style="color:blue;">{{moy}}</td>
+                          
+                        </tbody>
+                        
+                      </table>
+                  
+                          
+                    </div>
+               
+                  </div>
+         
+                <footer>
+                  <p> – Informatique − Développement WEB </p>
+                  <p>Ngaye Meckhe Angle RN:1 | <a href="mailto:lamine.mbaye0104@gmail.com">lamine.mbaye0104@gmail.com</a></p>
+                </footer>
+                </div>
+               
+                <button printSectionId = " print-section " ngxPrint class="btn btn-outline-primary" >
+                  <span class="fas fa-fw fa-download"></span>
+                  Imprimer
+                 </button > 
+                </fieldset>     
+    </div>
+</div>
+</div>
+</div>

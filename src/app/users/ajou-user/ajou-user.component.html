@@ -34,7 +34,7 @@
                 <label>Nom & Prenom</label>
                 <input id="Name" [ngClass]="{ 'is-invalid': submitted && f.nomComplet.errors }" formControlName="nomComplet" type="text" class="form-control" placeholder="Nom Complet">
                 <div *ngIf="submitted && f.nomComplet.errors" class="invalid-feedback">
-                    <div *ngIf="f.nomComplet.errors.required">Username est Obligatoire</div>
+                    <div *ngIf="f.nomComplet.errors.required">Nom est Obligatoire</div>
                 </div>
             </div>
             <div class="form-group form-group-default">
@@ -48,7 +48,8 @@
                 <label>Password</label>
                 <input id="Name" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password" type="password" class="form-control" placeholder="Password">
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                    <div *ngIf="f.password.errors.required">Username est Obligatoire</div>
+                    <div *ngIf="f.password.errors.required">Password est Obligatoire</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
                 </div>
             </div>
 <div class="form-group form-group-default">

@@ -17,4 +17,15 @@ note:Note
   getNoteByMatSesAnn(mat,sems,an){
     return this.HttpClient.get<any>(`${environment.myApi}/api/consulterNoteSemEleve/${mat},${sems},${an}`);
   }
+  editeNote(id:number){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/notes/${id}`);
+  }
+
+  getMoy(mat,sems,an){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/consulterNoteSemEleve/${mat},${sems},${an}`);
+  }
+
+  getMoyAnnuelle(mat,sems,an){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/CalculeMoyenne/${mat},${sems},${an}`);
+  }
 }

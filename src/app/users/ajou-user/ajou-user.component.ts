@@ -29,7 +29,7 @@ export class AjouUserComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['',[ Validators.required,Validators.minLength(6)]],
       nomComplet: ['', Validators.required],
       profil: ['', Validators.required]
   });
@@ -69,7 +69,7 @@ export class AjouUserComponent implements OnInit {
             },
             
             error => {
-              alert('Username or password is incorrect')                                                                               
+              alert('Invalide')                                                                               
                 this.loading = false;
             });
 }

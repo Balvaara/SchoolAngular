@@ -1,3 +1,4 @@
+import { AlertService } from './../../services/alert.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PayementService } from './../../services/payement.service';
@@ -12,6 +13,8 @@ export class ListePayementComponent implements OnInit {
   allmois
   loginForm: FormGroup
   matriculeEleve=''
+  loading = false;
+  submitted = false;
   moi='' 
   variable=true
   variable1=false
@@ -20,6 +23,7 @@ export class ListePayementComponent implements OnInit {
   allsession
   constructor( private pay:PayementService,
     private formBuilder: FormBuilder,
+    private alertService: AlertService,
     private router: Router) { }
 
   ngOnInit() {
@@ -44,20 +48,26 @@ export class ListePayementComponent implements OnInit {
   
 
   }
+  get f() { return this.loginForm.controls; }
  
   onChanges(): void {
  
       this.loginForm.get('matriculeEleve').valueChanges.subscribe(val => {
     
-    if (this.loginForm.value.matriculeEleve) {
-      
-      // console.log(this.loginForm.value.matriculeEleve)
-
-      this.loginForm.get('mois').disable();
-    }else{
-    this.loginForm.get('mois').enable();
-    }
+        this.Desactive(val);
+ 
      });
+  }
+  Desactive(val) {
+    if (val) {
+      this.loginForm.get('mois').disable()
+    }else{
+      this.loginForm.get('mois').enable()
+    }
+    
+   
+   
+    
   }
   
   // onChanges1(): void {
@@ -76,21 +86,34 @@ export class ListePayementComponent implements OnInit {
  
   //    });
   // }
-  get f() { return this.loginForm.controls; }
+ 
   onSubmit() {
+    this.submitted = true;
+      // reset alerts on submit
+      this.alertService.clear();
+
+      // stop here if form is invalid
+      if (this.loginForm.invalid) {
+          return;
+      }
+  
+      this.loading = true;
     this.variable=false
     this.variable1=true
+    
+
+  
     if (this.loginForm.value.mois) {
      
   this.pay.getPayMois(this.loginForm.value.mois,this.loginForm.value.ses).subscribe(
     data=>{this.allpay=data;
-   console.log(data);
+  //  console.log(data);
   }                                                                       
      )
     }if(this.loginForm.value.matriculeEleve){
       this.pay.getPayEl(this.loginForm.value.matriculeEleve,this.loginForm.value.ses).subscribe(
         data=>{this.allpay=data;
-      console.log(data);
+      // console.log(data);
       }                                                                       
          )
     }
@@ -101,6 +124,7 @@ export class ListePayementComponent implements OnInit {
 retour(){
   this.variable=true
   this.variable1=false
+  this.loading = false;
   this.router.navigate(['default/liste_payement']);
 }
 }

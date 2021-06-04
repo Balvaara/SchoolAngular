@@ -12,9 +12,14 @@ import { NoteService } from 'src/app/services/note.service';
 export class VerifinoteComponent implements OnInit {
   loginForm: FormGroup
   variable1=false
+  variable=false
   allsession
   allsems
+  valeur=''
+  loading = false;
   notes:any
+  submitted = false;
+  idmod:any
   constructor(private formBuilder: FormBuilder,
     private router: Router,
      private note:NoteService,
@@ -24,7 +29,8 @@ export class VerifinoteComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       matriculeEleve: ['', Validators.required],
       sems: ['', Validators.required],
-      session: ['', Validators.required]
+      session: ['', Validators.required],
+      valeur: ['', Validators.required]
 
   });
 
@@ -37,12 +43,48 @@ export class VerifinoteComponent implements OnInit {
       data=>{this.allsems=data['hydra:member'];
       //  console.log(data);
     }                                                                       
-       )
+       ),
 
-  }
+  
+  this.onChanges();
+
+}
+get f() { return this.loginForm.controls; }
+onChanges(): void {
+  this.loginForm.get('id').valueChanges.subscribe(val => {
+    // console.log(val);
+   
+    this.editNote(val);
+  });
+}
+editNote(val){
+ 
+  this.variable = !this.variable;
+  this.note.editeNote(val).subscribe(
+    data=>{
+    
+      if (data) {
+        console.log(data)
+      const note = data ;
+      this.idmod =note.id;
+      this.valeur = note.valeur;
+     
+      }
+ 
+    }
+  )
+   }
+
   Recherche(){
+    // this.submitted = true;
+
+
+    // // stop here if form is invalid
+    // if (this.loginForm.invalid) {
+    //     return;
+    // }
     this.note.getNoteByMatSesAnn(this.loginForm.value.matriculeEleve,this.loginForm.value.sems,
-      this.loginForm.value.session,).subscribe(
+      this.loginForm.value.session).subscribe(
           data=>{
             if (data) {
               this.variable1=true
@@ -50,6 +92,13 @@ export class VerifinoteComponent implements OnInit {
               // console.log(inscription)
             
             }
+            error => {
+              alert('Invalide')                                                                               
+                // this.loading = false;
+            }
   })
+}
+retour(){
+  this.variable1=false
 }
 }

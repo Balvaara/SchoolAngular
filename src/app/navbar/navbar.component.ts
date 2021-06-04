@@ -44,6 +44,7 @@ variable : any = false;
         // console.log(data)
       }
     )
+    
     this.onChanges();
   }
   onChanges(): void {
@@ -68,7 +69,7 @@ variable : any = false;
         this.username = user.username;
         this.password = user.password;
         this.nomComplet =user.nomComplet;
-        
+        // console.log(atob(this.password))
         this.loginForm.get('username').enable();
         this.loginForm.get('password').enable();
         this.loginForm.get('nomComplet').enable();

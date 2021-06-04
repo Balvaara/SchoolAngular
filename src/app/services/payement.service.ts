@@ -15,9 +15,9 @@ payement:Payement
   }
 
 
-  MyMatricule(matriculeEleve){
+  MyMatricule(matriculeEleve:any){
   
-    return this.HttpClient.get<any>(`${environment.myApi}/api/eleves?matriculeEleve=${matriculeEleve}`);
+    return this.HttpClient.get<any>(`${environment.myApi}/api/eleveseMat/${matriculeEleve}`);
   }
   Isersion(payement){
     return this.HttpClient.post<any>(`${environment.myApi}/api/ajout_payement`,payement);
