@@ -1,0 +1,184 @@
+<div class="card">
+        <div class="page-header">
+            <h4 class="page-title">Professeurs</h4>
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <p >
+                        <i class="flaticon-home"></i>
+                    </p>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <p >Professeurs</p>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <p >Liste Professeurs</p>
+                </li>
+            </ul>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/ajout_prof" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Nouvel Professeur</a>
+            </div>
+        </div>
+        
+ 
+    <!-- <div class="card-body"> -->
+      
+           
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button type="submit" class="btn btn-search pr-1">
+                            <i class="fa fa-search search-icon"></i>
+                        </button>
+                    </div>
+                    <input type="text" placeholder="Search ..." class="form-control" [(ngModel)]="term">
+                </div>
+         
+    
+        <table class="table table-head-bg-primary mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Telephone</th>
+                
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Matricule</th>
+                    <th scope="col">Matieres</th>
+                   <th scope="col">Modifier</th>
+                   <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let profs of allpro | paginate:{itemsPerPage:5,currentPage:p}| filter:term ">
+                    <td>{{profs.id}}</td>
+                    <td>{{profs.prenompr}}</td>
+                    <td>{{profs.nompr}}</td>
+                    <td>{{profs.telpr }}</td>
+                   
+                    <td>{{profs.adressepr}}</td>
+                    <td>{{profs.matriculepr}}</td>
+                    <td>
+                        <tr *ngFor="let prof of profs.mats ">
+                       {{prof.libellemat}}
+                        </tr>
+                    </td>
+                    <td><button type="button" data-toggle="tooltip" title=""
+                        class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"
+                        (click)="editProf(profs.id)"   data-toggle="modal"
+                        data-target="#exampleModalLongProf">
+                        <i class="fa fa-edit"></i></button></td>
+                    <td><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                    data-original-title="Remove"
+                    mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    placement="left"
+                    (confirm)="confirmClicked = Action(profs.id)"
+                    (cancel)="cancelClicked = true"  >
+                    <i class="fa fa-times"></i></button>
+                </td>
+                </tr>
+               
+            </tbody>
+        </table>
+        
+    <!-- </div> -->
+    <div class="card-footer pb-0 pt-3">
+        <pagination-controls (pageChange)="p=$event">
+                            
+        </pagination-controls>
+     </div>
+</div>
+<div class="container"  *ngIf="variable">
+<div  class="modal fade" id="exampleModalLongProf" tabindex="2" role="dialog" aria-labelledby="exampleModalLongProfTitle" aria-hidden="true" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+   
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="box-title"><i class="icon-arrow-right" ></i>Modifier Un Professeur</h3>
+                    </div>
+                    <form [formGroup]="loginForm" >
+                
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Prenom</label>
+                            <input [value]="prenompr" name="prenompr"  id="Name"  formControlName="prenompr" type="text" class="form-control" placeholder="Prenom Svp">
+                            
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Nom</label>
+                            <input [value]="nompr" name="nompr" id="Name" formControlName="nompr" type="text" class="form-control" placeholder="Nom Svp">
+                            
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Adresse</label>
+                            <input [value]="adressepr" name="adressepr"  id="Name"  formControlName="adressepr" type="text" class="form-control" placeholder="Adresse Svp">
+                           
+                        </div>
+                    </div>
+                 
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Telephone</label>
+                            <input [value]="telpr" name="telpr"  id="Name" formControlName="telpr" type="text" class="form-control" placeholder="+221......">
+                           
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Date De Naissance</label>
+                            <input type="date" [value]="datenaisspr" name="datenaisspr | date:'yyyy-MM-dd' " id="Name"  formControlName="datenaisspr"  class="form-control" >
+                            
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Lieu De Naissance</label>
+                            <input [value]="lieunaisspr" name="lieunaisspr" id="Name" formControlName="lieunaisspr" type="text" class="form-control" placeholder="Lieu De Naissance Svp">
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                       
+                        
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <button  [disabled]="loading" class="btn btn-primary" (click)="Enregistrer()">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                            </span>
+                                Submit
+                            </button>
+                        </div>
+                    
+                    </div>
+                </div>
+
+            </form>
+                    
+        </div>
+    </div>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+      </div>
+    </div>
+  </div>
+</div>
+

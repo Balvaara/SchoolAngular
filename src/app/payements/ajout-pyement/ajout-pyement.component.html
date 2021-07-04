@@ -1,0 +1,171 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="page-header">
+                    <h4 class="page-title">Payement</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <p >
+                                <i class="flaticon-home"></i>
+                            </p>
+                            
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Payement</p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Effectuer Un Payement</p>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="box-title">
+                    <i class="icon-arrow-right" ></i>Effectuer  Un Payement 
+                    <i class="fas fa-hand-holding-usd" ></i></h3>
+                 
+            </div>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/liste_payement" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Liste Payement</a>
+            </div>
+            <form [formGroup]="loginForm" >
+                <div class="form-row">
+                        <div class="form-group col-md-4">
+                            
+                            <div class="form-group form-group-default" >
+                                <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="session"  [ngClass]="{ 'is-invalid': submitted && f.session.errors }">
+                                    <option value="">&nbsp;</option>
+                                    <option *ngFor=" let ses of allsession " value="{{ses.id}}">
+                                        {{ses.libAnn}}
+                                    </option>
+                                    <div *ngIf="submitted && f.session.errors" class="invalid-feedback">
+                                        <div *ngIf="f.session.errors.required">L'annee est Obligatoire</div>
+                                    </div>
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez L'anne Scolaire</label>
+                            </div>
+                            
+                        </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Matricule De L'eleve</label>
+                            <input [value]="matriculeEleve" name="matriculeEleve" id="Name" [ngClass]="{ 'is-invalid': submitted && f.matriculeEleve.errors }" formControlName="matriculeEleve" type="text" class="form-control" placeholder="Matricule Svp">
+                            <div *ngIf="submitted && f.matriculeEleve.errors" class="invalid-feedback">
+                                <div *ngIf="f.matriculeEleve.errors.required">Matricule est Obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <button  class="btn btn-primary" (click)="Recherche()">
+                                <span class="spinner-border spinner-border-sm mr-1"></span>
+                                <i class="fa fa-search search-icon"></i>Recherche
+                            </button>
+                        </div>
+                    </div>
+                  
+              
+                </div>
+             <div *ngIf="variable">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Prenom</label>
+                            <input [value]="prenom" name="prenom" id="Name"   formControlName="prenom" type="text" class="form-control" placeholder="Prenom" disabled>
+                           
+                        </div>
+                    </div>
+                      <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Nom</label>
+                            <input [value]="nom" name="nom" id="Name"   formControlName="nom" type="text" class="form-control" placeholder="Nom" disabled>
+                           
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Classe</label>
+                            <input [value]="classe" name="classe" id="Name"   formControlName="classe" type="text" class="form-control" placeholder="Classe" disabled>
+                           
+                        </div>
+                    </div>
+                    
+                </div>
+               
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                       <div class="form-group form-group-default" >
+                            <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="mois"  [ngClass]="{ 'is-invalid': submitted && f.mois.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let moiss of allmois " value="{{moiss.id}}">
+                                    {{moiss.libellemois}}
+                                </option>
+                                <div *ngIf="submitted && f.mois.errors" class="invalid-feedback">
+                                    <div *ngIf="f.mois.errors.required">Le Mois est Obligatoire</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Le Mois a Paye</label>
+                    </div>
+                      </div>  
+                      <div class="form-group col-md-6">
+                    <div class="form-group form-group-default">
+                        <button  [disabled]="loading" class="btn btn-primary" (click)="onSubmit()">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                        </span>
+                            Submit
+                        </button>
+                    </div>
+                   
+                    </div>
+                </div>
+            </div>
+            </form>
+</div>
+</div>
+</div>
+<!-- <div class="col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Recu D'inscription</div>
+        </div>
+        
+       
+        <div class="card-body">
+            <section class="flex">
+                <dl>
+                    <dt>Nom </dt>
+                    <dd>ggg</dd>
+                    <dt>Prenom</dt>
+                    <dd>ggg</dd>
+                    <dt>Matricule</dt>
+                    <dd>ggg</dd>
+                    <dt>Classe</dt>
+                    <dd>ggg</dd>
+                    <dt>Session</dt>
+                    <dd>ggg</dd>
+                    <dt>Montant</dt>
+                    <dd>ggg</dd>
+                </dl>
+              
+            </section>
+            <div class="chart-container">
+                <div class="card-header">
+                    <div class="card-title"></div>
+                </div>
+                <p>Le Savoir C'est Le Povoir</p>
+                <canvas id="lineChart"></canvas>
+               
+            </div>
+        </div>
+        <button  class="btn btn-primary" (click)="Imprimer()">
+            imp
+        </button>
+    </div>
+    
+</div> -->

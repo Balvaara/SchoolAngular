@@ -1,0 +1,127 @@
+<div class="main-header">
+  <!-- Logo Header -->
+  <div class="logo-header" data-background-color="blue">
+    
+    <a href="index.html" class="logo">
+      <img src="assets/img/logo.svg" alt="navbar brand" class="navbar-brand">
+    </a>
+    <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="icon-menu"></i>
+      </span>
+    </button>
+    <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+    <div class="nav-toggle">
+      <button class="btn btn-toggle toggle-sidebar">
+        <i class="icon-menu"></i>
+      </button>
+    </div>
+  </div>
+  <!-- End Logo Header -->
+
+  <!-- Navbar Header -->
+  <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+    
+    <div class="container-fluid">
+      
+      <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+        
+        <li class="nav-item dropdown hidden-caret">
+          <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+            <div class="avatar-sm">
+              <img src="assets/img/user1.png" alt="..." class="avatar-img rounded-circle">
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-user animated fadeIn" *ngFor="let user of alluser">
+            <div class="dropdown-user-scroll scrollbar-outer">
+              <li>
+                <div class="user-box">
+                  <div class="avatar-lg"><img src="assets/img/user1.png" alt="image profile" class="avatar-img rounded"></div>
+                  <div class="u-text">
+                    <h4>{{user.nomComplet}}</h4>
+                    <p class="text-muted">{{user.username}}</p>
+                    <a href="" class="btn btn-xs btn-secondary btn-sm"(click)="editUser(user.id)" data-toggle="modal" data-target="#exampleModalLong">
+                    View Profile</a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="dropdown-divider"></div>
+                <p align='center'>Nom complet:{{user.nomComplet}}</p>
+                <p align='center'>Profil: {{user.profil.libelleRole}}</p>
+               
+                <div class="dropdown-divider"></div>
+                <button class="btn btn-outline-danger"  mwlConfirmationPopover
+                  [popoverTitle]="popoverTitle"
+                  [popoverMessage]="popoverMessage"
+                  placement="up"
+                  (confirm)="confirmClicked = logout()"
+                  (cancel)="cancelClicked = true"  >
+                  <i class="fa fa-unlock"></i>
+                  Logout</button>
+              </li>
+            </div>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+</div>
+
+  <div  class="modal fade" id="exampleModalLong" tabindex="2" 
+        role="dialog" aria-labelledby="exampleModalLongTitle"
+         aria-hidden="true" >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+             
+              </div>
+              <div class="modal-body" >
+              
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-angle-right" ></i>Editer Mon Profil</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            
+            <div class="form-group form-group-default">
+                <label>Nom & Prenom</label>
+                <input id="Name"[value]="nomComplet" name="nomComplet"  formControlName="nomComplet" type="text" class="form-control" placeholder="Nom Complet">
+               
+            </div>
+            <div class="form-group form-group-default">
+                <label>UserName</label>
+                <input id="Name" [value]="username" name="username"   formControlName="username" type="text" class="form-control" placeholder="username">
+               
+            </div>
+            <div class="form-group form-group-default">
+                <label>Password</label>
+                <input id="Name"[value]="password" name="password"  formControlName="password" type="text " class="form-control" placeholder="Password">
+               
+            </div>
+
+<div class="card-action">
+    <button  [disabled]="loading" class="btn btn-primary">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Editer</button>
+</div>
+</form>
+          </div>
+          
+        
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+              </div>
+            </div>
+          </div>
+        </div>

@@ -1,0 +1,299 @@
+<!-- Sidebar -->
+<div class="sidebar sidebar-style-2">			
+  <div class="sidebar-wrapper scrollbar scrollbar-inner">
+    <div class="sidebar-content" *ngFor="let user of alluser">
+      <div class="user">
+        <div class="avatar-sm float-left mr-2">
+          <img src="../assets/img/user1.png" alt="..." class="avatar-img rounded-circle">
+        </div>
+        <div class="info">
+          <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+            <span>
+              {{user.nomComplet}}
+              <span class="user-level">{{user.profil.libelleRole}}</span>
+              <span class="caret"></span>
+            </span>
+          </a>
+          <div class="clearfix"></div>
+
+          <div class="collapse in" id="collapseExample">
+            <ul class="nav" >
+            
+              <li>
+                 <button type="button" class="btn btn-outline-danger"
+                  mwlConfirmationPopover
+                  [popoverTitle]="popoverTitle"
+                  [popoverMessage]="popoverMessage"
+                  placement="up"
+                  (confirm)="confirmClicked = logout()"
+                  (cancel)="cancelClicked = true"  >
+                  <i class="fa icon-logout"></i> Deconnexion</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="nav nav-primary">
+        <li class="nav-item active">
+          
+        </li>
+        <li class="nav-section">
+          <span class="sidebar-mini-icon">
+            <i class="fa fa-ellipsis-h"></i>
+          </span>
+          <h4 class="text-section">Ressources</h4>
+        </li>
+        <li class="nav-item">
+          <a data-toggle="collapse" href="#base">
+            <i class="fas fa-user"></i>
+            <p>Utilisateurs</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="base">
+            <ul class="nav nav-collapse">
+              <li>
+                <a href="" routerLink="/default/ajout_user">
+                  <i class="fas fa-user"></i><p>Ajout Utilisateur</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/lister_user">
+                  <i class="fas fa-users"></i><p>Liste Utilisateurs</p>
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a data-toggle="collapse" href="#sidebarLayouts">
+            <i class="fa fa-school fa-3x"></i>
+            <p>Classe&Niveau&Serie</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="sidebarLayouts">
+            <ul class="nav nav-collapse">
+              <li>
+                <a href="" routerLink="/default/ajout_classe">
+                  <i class="fa fa-school"></i><p>Ajout Classe</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/lister_classe">
+                  <i class="fas fa-table"></i><p>Liste Classe</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/ajout_niv">
+                  <i class="fa fa-school"></i><p>Ajout Niveau</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/lister_niv">
+                  <i class="fas fa-table"></i><p>Liste Niveau</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/ajout_serie">
+                  <i class="fa fa-school"></i><p>Ajout Serie</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/lister_serie">
+                  <i class="fas fa-table"></i><p>Liste Serie</p>
+                </a>
+              </li>
+            
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a data-toggle="collapse" href="#forms">
+            <i class="fas fa-pen"></i>
+            <p>Inscription</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="forms">
+            <ul class="nav nav-collapse">
+              <li>
+                <a href="" routerLink="/default/inscrire">
+                  <i class="fas fa-pen-square"></i><p>Inscrire</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/lister_eleve">
+                  <i class="fas fa-graduation-cap"></i><p>Liste Eleve</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/lister_parent" >
+                  <i class="fas fa-table"></i><p>Liste Tuteurs</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/lister_inscrits">
+                  <i class="fas fa-feather-alt"></i><p>Liste Inscrits</p>
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a data-toggle="collapse" href="#tables">
+            <i class="fas fa-dollar-sign"></i>
+            <p>Mensualité</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="tables">
+            <ul class="nav nav-collapse">
+              <li>
+                <a href="" routerLink="/default/payement">
+                  <i class="fas fa-hand-holding-usd" ></i><p>Payement</p>
+                </a>
+              </li>
+              <li>
+                <a href=""  routerLink="/default/liste_payement">
+                  <i class="fas fa-file-invoice-dollar"></i><p> Payements</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a data-toggle="collapse" href="#maps">
+            <i class="fas fa-user-graduate"></i>
+            <p>Professeurs & Matieres</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="maps">
+            <ul class="nav nav-collapse">
+              <li>
+                <a href="" routerLink="/default/ajout_matiere">
+                  <i class="fas fa-book-reader"></i><p>Ajout Matiere</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/ajout_classe_mat">
+                  <i class="fas fa-book-reader"></i><p>Ajout Matiere Classe</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/lister_matiere">
+                  <i class="fas fa-book-open"></i><p>Liste Matieres</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/ajout_prof">
+                  <i class="fas fa-user-tie"></i><p>Ajout Professeur</p>
+                </a>
+              </li>
+              <li>
+                <a href="" routerLink="/default/lister_prof">
+                  <i class="fas fa-users"></i><p>Liste Professeurs</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- <li class="nav-item">
+          <a data-toggle="collapse" href="#charts">
+            <i class="far fa-chart-bar"></i>
+            <p>Charts</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="charts">
+            <ul class="nav nav-collapse">
+              <li>
+                <a href="charts/charts.html">
+                  <span class="sub-item">Chart Js</span>
+                </a>
+              </li>
+              <li>
+                <a href="charts/sparkline.html">
+                  <span class="sub-item">Sparkline</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> -->
+        <li class="nav-item">
+          <a href="" routerLink="/default/menu">
+            <i class="fas fa-clipboard-list"></i>
+            <p>Evaluations</p>
+            <!-- <span class="badge badge-success">4</span> -->
+          </a>
+        </li>
+          <li class="nav-item">
+          <a href="" routerLink="/default/menu_cours">
+            <i class="fas fa-archive"></i>
+            <p>Cours</p>
+            <!-- <span class="badge badge-success">4</span> -->
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="" routerLink="/default/static">
+            <i class="fas fa-chart-bar"></i>
+            <p>Statistiques</p>
+            <!-- <span class="badge badge-success">4</span> -->
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a data-toggle="collapse" href="#submenu">
+            <i class="fas fa-bars"></i>
+            <p>Menu Levels</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="submenu">
+            <ul class="nav nav-collapse">
+              <li>
+                <a data-toggle="collapse" href="#subnav1">
+                  <span class="sub-item">Level 1</span>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="subnav1">
+                  <ul class="nav nav-collapse subnav">
+                    <li>
+                      <a href="#">
+                        <span class="sub-item">Level 2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span class="sub-item">Level 2</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a data-toggle="collapse" href="#subnav2">
+                  <span class="sub-item">Level 1</span>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="subnav2">
+                  <ul class="nav nav-collapse subnav">
+                    <li>
+                      <a href="#">
+                        <span class="sub-item">Level 2</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="sub-item">Level 1</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> -->
+        <!-- <li class="mx-4 mt-2">
+          <a href="http://themekita.com/atlantis-bootstrap-dashboard.html" class="btn btn-primary btn-block"><span class="btn-label mr-2"> <i class="fa fa-heart"></i> </span>Buy Pro</a> 
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- End Sidebar -->

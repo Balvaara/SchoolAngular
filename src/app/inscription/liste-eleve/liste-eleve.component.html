@@ -1,0 +1,158 @@
+<div class="card">
+        <div class="page-header">
+            <h4 class="page-title">Inscrits</h4>
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <p >
+                        <i class="fas fa-feather-alt"></i>
+                    </p>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <p >Inscrits</p>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <p >Liste Des Inscrits</p>
+                </li>
+            </ul>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/inscrire" class="btn btn-primary btn-round"> <i class="fas fa-feather-alt"></i>Nouvelle Inscription</a>
+            </div>
+        </div>
+        
+ 
+    <!-- <div class="card-body"> -->
+      
+           
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button type="submit" class="btn btn-search pr-1">
+                            <i class="fa fa-search search-icon"></i>
+                        </button>
+                    </div>
+                    <input type="text" placeholder="Search ..." class="form-control" [(ngModel)]="term">
+                </div>
+         
+    
+        <table class="table table-head-bg-primary mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Matricule</th>
+                    <th scope="col">Prenom</th>
+                   
+                
+                    <th scope="col">Nom</th>
+                    <th scope="col">Date Naissance</th>
+                    <th scope="col">Lieu Naissance</th>
+                   <th scope="col">Modifier</th>
+                   <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ins of allins | paginate:{itemsPerPage:5,currentPage:p}| filter:term ">
+                    <td>{{ins.id}}</td>
+                    <td>{{ins.matriculeEleve}}</td>
+                    <td>{{ins.prenom}}</td>
+                    
+                   
+                    <td> {{ins.nom }}</td>
+                    <td>{{ins.datenais | date:'dd-MM-yyyy '}}</td>
+                    <td>{{ins.lieunaiss}}</td>
+                    <td><button type="button" data-toggle="tooltip" title=""
+                        class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"
+                        (click)="editEle(ins.id)"   data-toggle="modal"
+                        data-target="#exampleModalLongEl">
+                        <i class="fa fa-edit"></i></button></td>
+                    <td><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                    data-original-title="Remove"
+                    mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    placement="left"
+                    (confirm)="confirmClicked = Action(ins.id)"
+                    (cancel)="cancelClicked = true"  >
+                    <i class="fa fa-times"></i></button>
+                </td>
+                </tr>
+               
+            </tbody>
+        </table>
+        
+    <!-- </div> -->
+    <div class="card-footer pb-0 pt-3">
+        <pagination-controls (pageChange)="p=$event">
+                            
+        </pagination-controls>
+     </div>
+</div>
+
+  <!-- MODIFICATION -->
+<div class="container"  *ngIf="variable">
+    <div  class="modal fade" id="exampleModalLongEl" tabindex="2" role="dialog" aria-labelledby="exampleModalLongElTitle" aria-hidden="true" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+       
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="box-title"><i class="icon-arrow-right" ></i>Modifier Eleve</h3>
+                        </div>
+                        <form [formGroup]="loginForm" >
+                                    <div class="form-group form-group-default">
+                                        <label>ID</label>
+                                        <input [value]="idmod" name="idmod"  formControlName="id" type="text" class="form-control" id="disableinput" disabled>
+                                    
+                                    </div>
+                                <div class="form-group form-group-default">
+                                    <label>Prenom</label>
+                                    <input [value]="prenom" name="prenom" id="Name"  formControlName="prenom" type="text" class="form-control">
+                                    
+                                </div>
+            
+                                <div class="form-group form-group-default">
+                                    <label>Nom</label>
+                                    <input [value]="nom" name="nom" id="Name"  formControlName="nom" type="text" class="form-control" >
+                                </div>
+                        
+
+                            <div class="form-group form-group-default">
+                                <label>Date Naissance</label>
+                                <input [value]="datenaissance | date:'dd-MM-yyyy '" name="datenaissance" id="Name"  formControlName="datenaissance" type="Date" class="form-control">
+                                
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Lieu Naissance</label>
+                                <input [value]="lieu" name="lieu" id="Name"  formControlName="lieu" type="text" class="form-control" >
+
+                            </div>
+                              <div class="form-group form-group-default">
+                                <select  name="sexe" class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="sexe"  >
+                                    <option value="">{{sexe}}</option>
+                                    <option >Masculin</option>
+                                    <option >Feminin</option>
+                                
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez Le sexe...</label>
+                            </div>
+                            <div class="card-action">
+                                <button   class="btn btn-primary" (click)="onSubmit()">
+                                    Submit</button>
+                            </div>      
+                            </form>
+                    </div>
+                    </div>
+                    </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+          </div>
+        </div>
+      </div>
+</div>

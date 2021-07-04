@@ -1,0 +1,166 @@
+<div class="card">
+    <div class="page-header">
+        <h4 class="page-title">Classes</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <p >
+                    <i class="fa fa-school"></i>
+                </p>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <p >classes</p>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <p >Liste classes</p>
+            </li>
+        </ul>
+        <div class="ml-md-auto py-4 py-md-2">
+            <a href="" routerLink="/default/ajout_classe" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Nouvel Classe</a>
+        </div>
+    </div>
+    
+
+<!-- <div class="card-body"> -->
+  
+       
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button type="submit" class="btn btn-search pr-1">
+                        <i class="fa fa-search search-icon"></i>
+                    </button>
+                </div>
+                <input type="text" placeholder="Search ..." class="form-control" [(ngModel)]="term">
+            </div>
+     
+
+    <table class="table table-head-bg-primary mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Code Classe</th>
+                <th scope="col">Libelle Classe</th>
+                <th scope="col">Niveau</th>
+                <th scope="col">Serie</th>
+                <th scope="col">Frais Inscription</th>
+                <th scope="col">Mentialite</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let classe of allclasse | paginate:{itemsPerPage:5,currentPage:p}| filter:term ">
+                <td>{{classe.id}}</td>
+                <td>{{classe.codeclasse}}</td>
+                <td>{{classe.libelleclasse}}</td>
+                <td>{{classe.niveaux.libelleniveau}}</td>
+                <td>{{classe.series.libelleserie}}</td>
+                <td>{{classe.montantIns}}</td>
+                <td>{{classe.montantMens}}</td>
+                
+            <td><button type="button" data-toggle="tooltip" title=""
+             class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"
+                 data-toggle="modal" data-target="#exampleModalLongM"
+                 (click)="editclasse(classe.id)" ><i class="fa fa-edit"></i>
+                 </button></td>
+            <td><button type="button"  data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+             data-original-title="Remove"
+              mwlConfirmationPopover
+              [popoverTitle]="popoverTitle"
+              [popoverMessage]="popoverMessage"
+              placement="left"
+              (confirm)="confirmClicked = Action(classe.id)"
+              (cancel)="cancelClicked = true"  >
+               <i class="fa fa-times"></i></button>
+            </td>
+            </tr>
+           
+        </tbody>
+    </table>
+    
+<!-- </div> -->
+<div class="card-footer pb-0 pt-3">
+    <pagination-controls (pageChange)="p=$event">
+                        
+    </pagination-controls>
+      </div>
+</div>
+                   <!-- MODIFICATION -->
+<div class="container"  *ngIf="variable">
+    <div  class="modal fade" id="exampleModalLongM" tabindex="2" role="dialog" aria-labelledby="exampleModalLongMTitle" aria-hidden="true" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+       
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="box-title"><i class="icon-arrow-right" ></i>Modifier Classe</h3>
+                        </div>
+                        <form [formGroup]="loginForm" >
+                            <div class="form-group form-group-default">
+                                <label>ID</label>
+                                <input [value]="idmod" name="idmod"  formControlName="id" type="text" class="form-control" id="disableinput" disabled>
+                              
+                            </div>
+                        <div class="form-group form-group-default">
+                            <label>Code Classe</label>
+                            <input [value]="codeclasse" name="codeclasse" id="Name"  formControlName="codeclasse" type="text" class="form-control">
+                            
+                        </div>
+    
+                        <div class="form-group form-group-default">
+                            <label>Libelle Classe</label>
+                            <input [value]="libelleclasse" name="libelleclasse" id="Name"  formControlName="libelleclasse" type="text" class="form-control" >
+            
+                        </div>
+            <div class="form-group form-group-default">
+                <select  name="niveaux" class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="niveaux"  >
+                    <option value="">{{niveaux}}</option>
+                    <option *ngFor=" let niveaux of Allniveau " value="{{niveaux.id}}">
+                        {{niveaux.libelleniveau}}
+                    </option>
+                  
+                </select>
+                <label for="selectFloatingLabel" class="placeholder">...Choisissez niveau...</label>
+            </div>
+            <div class="form-group form-group-default">
+                <select  name="series" class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="series"  >
+                    <option value="">{{series}}</option>
+                    <option *ngFor=" let series of Allserie " value="{{series.id}}">
+                        {{series.libelleserie}}
+                    </option>
+                  
+                </select>
+                <label for="selectFloatingLabel" class="placeholder">...Choisissez serie...</label>
+            </div>
+            <div class="form-group form-group-default">
+                <label>Frais Inscription</label>
+                <input [value]="montantIns" name="montantIns" id="Name"  formControlName="montantIns" type="text" class="form-control">
+                
+            </div>
+
+            <div class="form-group form-group-default">
+                <label>Mentialite</label>
+                <input [value]="montantMens" name="montantMens" id="Name"  formControlName="montantMens" type="text" class="form-control" >
+
+            </div>
+            <div class="card-action">
+                <button   class="btn btn-primary" (click)="onSubmit()">
+                    Submit</button>
+            </div>      
+            </form>
+            </div>
+            </div>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+          </div>
+        </div>
+      </div>
+    </div>

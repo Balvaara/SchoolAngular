@@ -1,0 +1,187 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="page-header">
+                    <h4 class="page-title">Evaluation</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <p >
+                                <i class="flaticon-home"></i>
+                            </p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Note</p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Inserer Une Note</p>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="box-title">
+                    <i class="icon-arrow-right" ></i>Inserer  Une Note 
+                    <i class="fas fa-hand-holding-usd" ></i></h3>
+                 
+            </div>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/liste_payement" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Liste Payement</a>
+            </div>
+            <form [formGroup]="loginForm" >
+                <div class="form-row">
+
+                    <div class="form-group col-md-4">
+                       <div class="form-group form-group-default" >
+                            <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="session"  [ngClass]="{ 'is-invalid': submitted && f.session.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let anne of allsession " value="{{anne.id}}">
+                                    {{anne.libAnn}}
+                                </option>
+                                <div *ngIf="submitted && f.session.errors" class="invalid-feedback">
+                                    <div *ngIf="f.session.errors.required">Annee Scolaire est Obligatoire</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Une Annee Scolaire...</label>
+                        </div>
+                    </div> 
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Matricule De L'eleve</label>
+                            <input [value]="matriculeEleve" name="matriculeEleve" id="Name" [ngClass]="{ 'is-invalid': submitted && f.matriculeEleve.errors }" formControlName="matriculeEleve" type="text" class="form-control" placeholder="Matricule Svp">
+                            <div *ngIf="submitted && f.matriculeEleve.errors" class="invalid-feedback">
+                                <div *ngIf="f.matriculeEleve.errors.required">Matricule est Obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <button  class="btn btn-primary" (click)="Recherche()">
+                                <span class="spinner-border spinner-border-sm mr-1"></span>
+                                <i class="fa fa-search search-icon"></i>Recherche
+                            </button>
+                        </div>
+                    </div>
+                </div>
+              <div *ngIf="variable1">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Nom De L'eleve</label>
+                            <input disabled [value]="nom" name="nom" id="Name" formControlName="nom" type="text" class="form-control" placeholder="Nom">
+                           
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Prenom De L'eleve</label>
+                            <input disabled [value]="prenom" name="prenom" id="Name" formControlName="prenom" type="text" class="form-control" placeholder="Prenom">
+                           
+                        </div>
+                    </div>
+                        
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Classe De L'eleve</label>
+                            <input disabled [value]="classe" name="classe" id="Name" formControlName="classe" type="text" class="form-control" placeholder="Classe">
+                           
+                        </div>
+                    </div>
+                  
+              
+                </div>
+                <div class="form-row">
+                  
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Numero D'inscription</label>
+                            <input disabled [value]="numIns" name="numIns" id="Name" formControlName="numIns" type="text" class="form-control" placeholder="Numero Inscription">
+                          
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Sexe</label>
+                            <input disabled [value]="sexe" name="sexe" id="Name" formControlName="sexe" type="text" class="form-control" placeholder="Genre">
+                          
+                        </div>
+                    </div>
+                      <div class="form-group col-md-4">
+                       <div class="form-group form-group-default" >
+                            <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="sems"  [ngClass]="{ 'is-invalid': submitted && f.sems.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let sems of allsems " value="{{sems.id}}">
+                                    {{sems.codesem}}
+                                </option>
+                                <div *ngIf="submitted && f.sems.errors" class="invalid-feedback">
+                                    <div *ngIf="f.sems.errors.required">Le Semestre est Obligatoire</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Le Semestre...</label>
+                        </div>
+                      </div>
+                  
+              
+                </div>
+                 <div class="form-row">
+                      
+                 
+                  
+                    <div class="form-group col-md-4">
+                       <div class="form-group form-group-default" >
+                            <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="mats"  [ngClass]="{ 'is-invalid': submitted && f.mats.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let moiss of allmat " value="{{moiss.id}}">
+                                    {{moiss.libellemat}}
+                                </option>
+                                <div *ngIf="submitted && f.mats.errors" class="invalid-feedback">
+                                    <div *ngIf="f.mats.errors.required">Le Matieres a Noter</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Une Matiere...</label>
+                        </div>
+                    </div> 
+                  <div class="form-group col-md-4">
+                        <div class="form-group form-group-default" >
+                            <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="typeNote"  [ngClass]="{ 'is-invalid': submitted && f.typeNote.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let type of allType " value="{{type.id}}">
+                                    {{type.libtn}}
+                                </option>
+                                <div *ngIf="submitted && f.typeNote.errors" class="invalid-feedback">
+                                    <div *ngIf="f.typeNote.errors.required">Le Type De Note</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Un Type De Note...</label>
+                        </div>
+                    </div>
+                  <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Valeur</label>
+                            <input  id="Name" formControlName="valeur" type="text" class="form-control" placeholder="La Valeur Svp">
+                           
+                        </div>
+                    </div>
+                   
+              
+                </div>
+                 <div class="form-row">
+                   <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <button  [disabled]="loading" class="btn btn-primary" (click)="Enregistrer()">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                            </span>
+                                Submit
+                            </button>
+                        </div>
+                </div>
+                </div>
+             </div>
+            </form>
+</div>
+</div>
+</div>

@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="page-header">
+                    <h4 class="page-title">Classe</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <p >
+                                <i class="fa fa-school"></i>
+                            </p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Classe</p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Ajouter Une Classe</p>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="box-title">
+                    <i class="icon-arrow-right" ></i>Inserer  Une Classe 
+                    <i class="fa fa-school" ></i></h3>
+                 
+            </div>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/lister_classe" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Liste Classe</a>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="Enregistrer()">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Code Classe</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.codeclasse.errors }" formControlName="codeclasse" type="text" class="form-control" placeholder="Code Classe Svp">
+                            <div *ngIf="submitted && f.codeclasse.errors" class="invalid-feedback">
+                                <div *ngIf="f.codeclasse.errors.required">Code Classe est Obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Libelle  De La Classe</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.libelleclasse.errors }" formControlName="libelleclasse" type="text" class="form-control" placeholder="Libelle Classe Svp">
+                            <div *ngIf="submitted && f.libelleclasse.errors" class="invalid-feedback">
+                                <div *ngIf="f.libelleclasse.errors.required">Libelle Classe est Obligatoire</div>
+                            </div>
+                        </div>
+                     </div>
+                    
+                        <div class="form-group col-md-4">
+                            
+                            <div class="form-group form-group-default" >
+                                <select  class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="niveaux"  [ngClass]="{ 'is-invalid': submitted && f.niveaux.errors }">
+                                    <option value="">&nbsp;</option>
+                                    <option *ngFor=" let niv of allniv " value="{{niv.id}}">
+                                        {{niv.libelleniveau}}
+                                    </option>
+                                    <div *ngIf="submitted && f.niveaux.errors" class="invalid-feedback">
+                                        <div *ngIf="f.niveaux.errors.required">Le Niveau est Obligatoire</div>
+                                    </div>
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...Choisissez Un Niveau</label>
+                            </div>
+                            
+                        </div>
+                 </div>
+                <div class="form-row">
+                         <div class="form-group col-md-4">
+                            
+                            <div class="form-group form-group-default" >
+                                <select  class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="series"  >
+                                    <option value="">&nbsp;</option>
+                                    <option *ngFor=" let ser of allser " value="{{ser.id}}">
+                                        {{ser.libelleserie}}
+                                    </option>
+                                   
+                                </select>
+                                <label for="selectFloatingLabel" class="placeholder">...La Serie Est Facultative...</label>
+                            </div>
+                         </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Montant D'inscription</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.montantIns.errors }" formControlName="montantIns" type="text" class="form-control" placeholder="Montant d'inscription de la Classe Svp">
+                            <div *ngIf="submitted && f.montantIns.errors" class="invalid-feedback">
+                                <div *ngIf="f.montantIns.errors.required">Veuillez Donner Le Montant D'inscription</div>
+                            </div>
+                        </div>
+                     </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Montant Mensuele</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.montantMens.errors }" formControlName="montantMens" type="text" class="form-control" placeholder="Montant Mensuele de la Classe Svp">
+                            <div *ngIf="submitted && f.montantMens.errors" class="invalid-feedback">
+                                <div *ngIf="f.montantMens.errors.required">Veuillez Donner Le Montant Mensuele</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                        
+                    <div class="form-group col-md-4">
+                            <div class="form-group form-group-default">
+                                <button  [disabled]="loading" class="btn btn-primary" >
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
+                                </span>
+                                    Submit
+                                </button>
+                            </div>
+                    </div>
+             </div>
+            </form>
+</div>
+</div>
+</div>
