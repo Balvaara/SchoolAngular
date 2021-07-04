@@ -3,6 +3,7 @@ import { ClasseService } from './../../services/classe.service';
 import { IscriptionService } from './../../services/iscription.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-liste-inscrits',
@@ -14,10 +15,13 @@ export class ListeInscritsComponent implements OnInit {
   allins
   cl=''
   cl1=''
+  inss:any
 
   alcl
   idmod:any
   variable : any = false;
+  variable1 : any = false;
+
   constructor( private ins:IscriptionService,
     private clss:ClasseService) { }
 
@@ -38,6 +42,7 @@ export class ListeInscritsComponent implements OnInit {
       }                                                                       
          ),
        this.onChanges();
+       this.onChanges1();
     
     
       }
@@ -46,6 +51,13 @@ export class ListeInscritsComponent implements OnInit {
           // console.log(val);
          
           this.editIns(val);
+        });
+      }
+      onChanges1(): void {
+        this.loginForm.get('id').valueChanges.subscribe(val => {
+          // console.log(val);
+         
+          this.Recu(val);
         });
       }
       get f() { return this.loginForm.controls; }
@@ -61,9 +73,6 @@ export class ListeInscritsComponent implements OnInit {
             const ins = data ;
             this.idmod =ins.id;
             this.cl=ins.classes.libelleclasse;
-          
-           
-    
             this.loginForm.get('idmod').disable();
             
             this.loginForm.get('cl').enable();
@@ -73,6 +82,25 @@ export class ListeInscritsComponent implements OnInit {
         )
          }
 
+         Recu(val){
+ 
+          this.variable1 = !this.variable1;
+          this.ins.editeIn(val).subscribe(
+            data=>{
+            
+              if (data){
+               
+              this.inss = data ;
+            
+                console.log(this.inss)
+          
+            
+             
+              }
+         
+            }
+          )
+           }
          onSubmit() {
 
           if (this.loginForm.value.cl!=='') 

@@ -1,0 +1,161 @@
+<div class='container'>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="page-header">
+                    <h4 class="page-title">Cours</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <p >
+                                <i class="fas fa-book"></i>
+                            </p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Cours</p>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <p >Emplois Du Temps</p>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="box-title">
+                    <i class="icon-arrow-right" ></i>Emplois Du Temps
+                    <i class="fas fa-book" ></i></h3>
+                 
+            </div>
+            <div class="ml-md-auto py-4 py-md-2">
+                <a href="" routerLink="/default/menu_cours" class="btn btn-primary btn-round">
+                 <i class="fas fa-archive"></i>Vers  Le Menu</a>
+            </div>
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                        <div class="form-group col-md-6">
+                       <div class="form-group form-group-default" >
+                            <select [value]="classes" name="classes" class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="classes"  [ngClass]="{ 'is-invalid': submitted && f.classes.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let cl of allcl " value="{{cl.id}}">
+                                    {{cl.libelleclasse}}
+                                </option>
+                                <div *ngIf="submitted && f.classes.errors" class="invalid-feedback">
+                                    <div *ngIf="f.classes.errors.required">Classe est Obligatoire</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Une Classe</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                       <div class="form-group form-group-default" >
+                            <select  class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="jours"  [ngClass]="{ 'is-invalid': submitted && f.jours.errors }">
+                                <option value="">&nbsp;</option>
+                                <option >Lundi</option>
+                                  <option >Mardi</option>
+                                    <option >Mercredi</option>
+                                      <option >Jeudi</option>
+                                        <option >Vendredi</option>
+                                          <option >Samedi</option>
+                                            <option >Dimanche</option>
+                                <div *ngIf="submitted && f.jours.errors" class="invalid-feedback">
+                                    <div *ngIf="f.jours.errors.required">jours est Obligatoire</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Le Jours</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-group form-group-default">
+                            <label>Heurs Debut</label>
+                            <input id="Name" [ngClass]="{ 'is-invalid': submitted && f.heurDebut.errors }" formControlName="heurDebut" type="time" class="form-control" placeholder="Matricule Svp">
+                            <div *ngIf="submitted && f.heurDebut.errors" class="invalid-feedback">
+                                <div *ngIf="f.heurDebut.errors.required">Heurs Debut est Obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-group form-group-default">
+                            <label>Heurs Fin</label>
+                            <input  id="Name" [ngClass]="{ 'is-invalid': submitted && f.heurFin.errors }" formControlName="heurFin" type="time" class="form-control" placeholder="Matricule Svp">
+                            <div *ngIf="submitted && f.heurFin.errors" class="invalid-feedback">
+                                <div *ngIf="f.heurFin.errors.required">Heurs Fin est Obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="form-row">
+                   
+                   
+              
+                    <div class="form-group col-md-6">
+                       <div class="form-group form-group-default" >
+                            <select [value]="mats" name="mats"   class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="mats"  [ngClass]="{ 'is-invalid': submitted && f.mats.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let mat of allmat " value="{{mat.id}}">
+                                    {{mat.libellemat}}
+                                </option>
+                                <div *ngIf="submitted && f.mats.errors" class="invalid-feedback">
+                                    <div *ngIf="f.mats.errors.required">Matiere est Obligatoire</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Une Matiere</label>
+                        </div>
+                    </div>
+                        <div class="form-group col-md-6">
+                       <div class="form-group form-group-default" >
+                            <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="professeurs"  [ngClass]="{ 'is-invalid': submitted && f.professeurs.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let prof of allprof " value="{{prof.id}}">
+                                    {{prof.prenompr}} {{prof.nompr}}->{{prof.matriculepr}}
+                                </option>
+                                <div *ngIf="submitted && f.professeurs.errors" class="invalid-feedback">
+                                    <div *ngIf="f.professeurs.errors.required">Le professeur est Obligatoire</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Le professeur</label>
+                        </div>
+                    </div>  
+                     <div class="form-group col-md-6">
+                       <div class="form-group form-group-default" >
+                            <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="annees"  [ngClass]="{ 'is-invalid': submitted && f.annees.errors }">
+                                <option value="">&nbsp;</option>
+                                <option *ngFor=" let sesseion of allsession " value="{{sesseion.id}}">
+                                    {{sesseion.libAnn}}
+                                </option>
+                                <div *ngIf="submitted && f.annees.errors" class="invalid-feedback">
+                                    <div *ngIf="f.annees.errors.required">L'annee est Obligatoire</div>
+                                </div>
+                            </select>
+                            <label for="selectFloatingLabel" class="placeholder">...Choisissez Une Annee</label>
+                        </div>
+                    </div> 
+                     <div class="form-group col-md-6">
+                        <div class="form-group form-group-default">
+                            <button  class="btn btn-primary">
+                            <span  class="spinner-border spinner-border-sm mr-1">
+                            </span>
+                                Submit
+                            </button>
+                        </div>
+                   
+                    </div>
+                </div>
+               
+                <div class="form-row">
+                    
+                   
+                   
+                </div>
+
+            </form>
+
+
+
+</div>
+</div>
+</div>

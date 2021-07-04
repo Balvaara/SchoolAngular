@@ -50,6 +50,8 @@
                     <th scope="col">Classe</th>
                     <th scope="col">Annee Scolaire</th>
                    <th scope="col">Modifier</th>
+                   <th scope="col">Recu</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -65,7 +67,14 @@
                         class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"
                         (click)="editIns(ins.id)"   data-toggle="modal"
                         data-target="#exampleModalLongInsC">
-                        <i class="fa fa-edit"></i></button></td>
+                        <i class="fa fa-edit"></i></button>
+                    </td>
+                    <td><button type="button" data-toggle="tooltip" title=""
+                        class="btn btn-link btn-primary btn-lg" 
+                        (click)="Recu(ins.id)"   data-toggle="modal"
+                        data-target="#exampleModalLongRecu">
+                        <i class="fas fa-file-download"></i></button>
+                    </td>
                
                 </tr>
                
@@ -85,7 +94,7 @@
     <div  class="modal fade" id="exampleModalLongInsC" tabindex="2" role="dialog" aria-labelledby="exampleModalLongInsCTitle" aria-hidden="true" >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-       
+    
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -118,3 +127,72 @@
       </div>
 </div>
 
+
+<div class="container"  *ngIf="variable1">
+    <div  class="modal fade" id="exampleModalLongRecu" tabindex="2" role="dialog" aria-labelledby="exampleModalLongRecuTitle" aria-hidden="true" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+    
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="box-title"><i class="icon-arrow-right" ></i>Recu D'inscription</h3>
+                        </div>
+      <div id = " print-section " > 
+          <header>
+            <h1>Recu de D'inscription
+              <h2>DgSchool/ <p style="color: #28d;"></p></h2>
+            </h1>
+          </header>
+          <section class="flex">
+            <dl>
+              <dt>Num Inscription</dt>
+              <dd>{{inss.numIns}}</dd>
+              <dt>Date D'inscription</dt>
+              <dd>{{inss.dateIns | date:'dd-MM-yyyy'}}</dd>
+            </dl>
+          </section>
+          <section class="flex">
+            <dl class="bloc">
+              <dt>Eleve:</dt>
+              <dd>
+                
+                <dl>
+                  <dt>Nom Complet </dt>
+                  <dd>{{inss.eleves.prenom}} {{inss.eleves.nom}}</dd>
+                  <dt>Matricule </dt>
+                  <dd>{{inss.eleves.matriculeEleve}}</dd>
+                   <dt>Sexe</dt>
+                  <dd>{{inss.eleves.sexe}}</dd>
+                   <dt>Date De Naissance</dt>
+                  <dd>{{inss.eleves.datenais | date:'dd-MM-yyyy'}}</dd>
+                  <dt>Classe </dt>
+                  <dd>{{inss.classes.libelleclasse}}</dd>
+                  <dt>Annee Scolaire </dt>
+                  <dd>{{inss.session.libAnn}}</dd>
+                 
+                  <!-- <dt></dt>
+                  <dd>bigboss@bigcompanylonglongemail.com</dd> -->
+                </dl>
+              </dd>
+            </dl>
+            
+          </section>
+         
+          <footer>
+            <p> – Informatique − Développement WEB </p>
+            <p>Ngaye Meckhe Angle RN:1 | <a href="mailto:lamine.mbaye0104@gmail.com">lamine.mbaye0104@gmail.com</a></p>
+          </footer>
+          </div>
+          <button printSectionId = " print-section " ngxPrint class="btn btn-outline-primary" ><span class="fas fa-fw fa-print"></span>Imprimer </button > 
+
+                    </div>
+                    </div>
+                    </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+          </div>
+        </div>
+      </div>
+</div>

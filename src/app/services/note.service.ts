@@ -21,6 +21,10 @@ note:Note
     return this.HttpClient.get<any>(`${environment.myApi}/api/notes/${id}`);
   }
 
+  modifier(id:number,data){
+    return this.HttpClient.put<any>(`${environment.myApi}/api/edite_Note/${id}`,JSON.stringify(data));
+  }
+
   getMoy(mat,sems,an){
     return this.HttpClient.get<any>(`${environment.myApi}/api/consulterNoteSemEleve/${mat},${sems},${an}`);
   }

@@ -39,7 +39,7 @@ export class ListePayementComponent implements OnInit {
     });
     this.pay.getSession().subscribe(
       data=>{this.allsession=data['hydra:member'];
-       console.log(data);
+      //  console.log(data);
     }                                                                       
        )
        

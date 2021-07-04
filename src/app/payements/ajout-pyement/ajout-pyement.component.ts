@@ -17,9 +17,10 @@ export class AjoutPyementComponent implements OnInit {
   loading = false;
   submitted = false;
   matriculeEleve='';
-  
+  session=''
+  variable=false
   allsession
-  nom='';prenom='';classes='';
+  nom='';prenom='';classe='';
   constructor(private formBuilder: FormBuilder,
     private pay:PayementService,
     private router: Router) { }
@@ -28,7 +29,10 @@ export class AjoutPyementComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       matriculeEleve: ['', Validators.required],
       session: ['', Validators.required],
-      mois: ['', Validators.required]
+      mois: ['', Validators.required],
+      prenom: ['', ],
+      nom: ['', ],
+      classe: ['', ]
   });
   this.pay.getSession().subscribe(
     data=>{this.allsession=data['hydra:member'];
@@ -36,8 +40,8 @@ export class AjoutPyementComponent implements OnInit {
   }                                                                       
      )
     
-  this.onChanges();
   // this.onChanges1();
+  this.Recherche();
 
   this.pay.getMois().subscribe(
     data=>{this.allmois=data['hydra:member'];
@@ -45,14 +49,7 @@ export class AjoutPyementComponent implements OnInit {
   }                                                                       
      )
   }
-  //auto remplissage
-  onChanges(): void {
-    this.loginForm.get('matriculeEleve').valueChanges.subscribe(val => {
-      // console.log(val);  
-     
-      this.getEleveByMat(val);
-    });
-  }
+
 
   get f() { return this.loginForm.controls; }
 
@@ -62,7 +59,7 @@ export class AjoutPyementComponent implements OnInit {
       session:this.loginForm.value.session,
       mois:`api/mois/${this.loginForm.value.mois}`,
   }
-  console.log(this.loginForm.value);
+  // console.log(this.loginForm.value);
     this.submitted = true;
 
 
@@ -83,28 +80,29 @@ export class AjoutPyementComponent implements OnInit {
 }
 
 //reccuperer l'eleve par matricule fourni 
-getEleveByMat(val) {
-  this.pay.MyMatricule(val).subscribe
+Recherche() {
+  this.pay.MyIns(this.loginForm.value.matriculeEleve,this.loginForm.value.session).subscribe
   (data => {
     if (data) {
+      this.variable=true
       const eleve = data ;
      console.log(eleve);
  
       // console.log(data["hydra:member"][0]);
       
-      this.nom =eleve.nom;
-      this.prenom = eleve.prenom;
-      this.classes = eleve.classes.libelleclasse;
+      this.nom =eleve.eleves.nom;
+      this.prenom = eleve.eleves.prenom;
+      this.classe = eleve.classes.libelleclasse;
       
-      this.loginForm.get('nom');
-      this.loginForm.get('prenom');
+      // this.loginForm.get('nom');
+      // this.loginForm.get('prenom');
       // this.loginForm.get('classes');
      
 
     } else {
       this.nom = '!!!!Nada';
       this.prenom = '!!!!Nada';
-      this.classes = '!!!!Nada';
+      this.classe = '!!!!Nada';
       this.loginForm.get('nom').enable();
       this.loginForm.get('prenom').enable();
       // this.loginForm.get('classes').enable();

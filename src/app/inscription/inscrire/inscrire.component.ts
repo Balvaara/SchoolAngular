@@ -30,6 +30,7 @@ export class InscrireComponent implements OnInit {
   numIns=''
   classe=''
   matriculeEleve=''
+  recu : any = false;
   constructor(private cl:ClasseService,
     private pay:PayementService,
     private inscrire:IscriptionService,
@@ -120,8 +121,7 @@ getEleveByMat(val) {
       this.loginForm.get('sexe').disable();
        this.loginForm.get('classe').disable();                                                                                                                                                                                                                                      
 
-      
-     
+    
 
     } else {
       this.nom = '';
@@ -190,9 +190,9 @@ getTiteur(val) {
   
 }
  
-
 onSubmit(){
-  
+
+  this.recu = !this.recu;
 const nom = this.loginForm.value.nom;
 const prenom = this.loginForm.value.prenom;
 const datenaissance = this.loginForm.value.datenaissance;
@@ -219,7 +219,7 @@ const nouveau_eleve = {
   telephone:telephone,
   session:this.loginForm.value.session,
 }
-  console.log(this.matriculeEleve)
+  // console.log(this.matriculeEleve)
 const encien_eleve = {
   matriculeEleve: this.matriculeEleve,
   classe:this.loginForm.value.classes,
@@ -227,9 +227,18 @@ const encien_eleve = {
 
 };
 // console.log(nouveau_eleve)
-
+this.recu=
+[
+  this.nom=this.loginForm.value.nom,
+  this.prenom=this.loginForm.value.prenom,
+  this.datenaissance=this.loginForm.value.datenaissance,
+  this.lieunaiss=this.loginForm.value.lieunaiss,
+  this.sexe=this.loginForm.value.sexe,
+  this.classes=this.loginForm.value.classes
+]
+// console.log(this.recu)
 if (this.loginForm.value.numIns=='') {
-// this.loading = true;
+this.loading = true;
 
 this.inscrire.IsersionNovEl(nouveau_eleve).subscribe(
     data => {
@@ -242,14 +251,14 @@ this.inscrire.IsersionNovEl(nouveau_eleve).subscribe(
     }
   );
 } else {
-  // this.loading = true;
+  this.loading = true;
   this.inscrire.IsersionEncEl(encien_eleve).subscribe(
     data => {
       
       alert(JSON.stringify(data["message"]))
     this.route.navigate(['/default/lister_eleve']);
-      // console.log(data);
-      // this.loading = false;
+      console.log(data);
+      this.loading = false;
     },
     error => {
      alert('Erreur')

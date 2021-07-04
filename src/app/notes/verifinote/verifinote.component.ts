@@ -1,3 +1,4 @@
+import { first } from 'rxjs/operators';
 import { PayementService } from './../../services/payement.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -16,6 +17,7 @@ export class VerifinoteComponent implements OnInit {
   allsession
   allsems
   valeur=''
+  Val
   loading = false;
   notes:any
   submitted = false;
@@ -101,4 +103,37 @@ editNote(val){
 retour(){
   this.variable1=false
 }
+Enregistrer(){
+        if (this.loginForm.value.valeur!=='') 
+        {
+          this.Val= this.loginForm.value.valeur;
+        
+        }
+      else {
+        this.Val=this.valeur; 
+      }
+
+      const Notes={
+        valeur:this.Val
+
+        }
+        this.note.modifier(this.idmod,Notes)
+        .pipe(first())
+        .subscribe(
+            data => {
+              alert(JSON.stringify (data["message"]));
+              
+            },
+            
+            error => {
+              alert('code serie or libelle serie is incorrect')                                                                               
+                this.loading = false;
+            });
+
+
+
+
+
+
+      }
 }

@@ -33,9 +33,9 @@
             <div class="ml-md-auto py-4 py-md-2">
                 <a href="" routerLink="/default/liste_payement" class="btn btn-primary btn-round"> <i class="fa fa-plus fa-fw"></i>Liste Payement</a>
             </div>
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="loginForm" >
                 <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             
                             <div class="form-group form-group-default" >
                                 <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="session"  [ngClass]="{ 'is-invalid': submitted && f.session.errors }">
@@ -51,7 +51,7 @@
                             </div>
                             
                         </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <div class="form-group form-group-default">
                             <label>Matricule De L'eleve</label>
                             <input [value]="matriculeEleve" name="matriculeEleve" id="Name" [ngClass]="{ 'is-invalid': submitted && f.matriculeEleve.errors }" formControlName="matriculeEleve" type="text" class="form-control" placeholder="Matricule Svp">
@@ -60,21 +60,38 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <button  class="btn btn-primary" (click)="Recherche()">
+                                <span class="spinner-border spinner-border-sm mr-1"></span>
+                                <i class="fa fa-search search-icon"></i>Recherche
+                            </button>
+                        </div>
+                    </div>
                   
               
                 </div>
+             <div *ngIf="variable">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <div class="form-group form-group-default">
                             <label>Prenom</label>
                             <input [value]="prenom" name="prenom" id="Name"   formControlName="prenom" type="text" class="form-control" placeholder="Prenom" disabled>
                            
                         </div>
                     </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-4">
                         <div class="form-group form-group-default">
                             <label>Nom</label>
                             <input [value]="nom" name="nom" id="Name"   formControlName="nom" type="text" class="form-control" placeholder="Nom" disabled>
+                           
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Classe</label>
+                            <input [value]="classe" name="classe" id="Name"   formControlName="classe" type="text" class="form-control" placeholder="Classe" disabled>
                            
                         </div>
                     </div>
@@ -98,7 +115,7 @@
                       </div>  
                       <div class="form-group col-md-6">
                     <div class="form-group form-group-default">
-                        <button  [disabled]="loading" class="btn btn-primary">
+                        <button  [disabled]="loading" class="btn btn-primary" (click)="onSubmit()">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
                         </span>
                             Submit
@@ -107,7 +124,7 @@
                    
                     </div>
                 </div>
-
+            </div>
             </form>
 </div>
 </div>

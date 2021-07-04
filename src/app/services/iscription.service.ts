@@ -11,7 +11,7 @@ export class IscriptionService {
 
   MyInscription(numIns){
   
-    return this.HttpClient.get<any>(`${environment.myApi}/api/inscrires/${numIns}`);
+    return this.HttpClient.get<any>(`${environment.myApi}/api/getIns/${numIns}`);
   }
 
   IsersionNovEl(eleve){

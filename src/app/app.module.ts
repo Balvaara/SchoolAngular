@@ -44,6 +44,9 @@ import { ListeParentComponent } from './inscription/liste-parent/liste-parent.co
 import { ListeInscritsComponent } from './inscription/liste-inscrits/liste-inscrits.component';
 import { BultinComponent } from './notes/bultin/bultin.component';
 import { NgxPrintModule } from 'ngx-print';
+import { EmploiDuTempsComponent } from './cours/emploi-du-temps/emploi-du-temps.component';
+import { MenuCoursComponent } from './cours/menu-cours/menu-cours.component';
+import { ListeEmpComponent } from './cours/liste-emp/liste-emp.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +82,9 @@ import { NgxPrintModule } from 'ngx-print';
     ListeParentComponent,
     ListeInscritsComponent,
     BultinComponent,
+    EmploiDuTempsComponent,
+    MenuCoursComponent,
+    ListeEmpComponent,
   ],
   imports: [
     BrowserModule,

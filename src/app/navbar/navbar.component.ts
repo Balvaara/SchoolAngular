@@ -69,7 +69,7 @@ variable : any = false;
         this.username = user.username;
         this.password = user.password;
         this.nomComplet =user.nomComplet;
-        // console.log(atob(this.password))
+       console.log(btoa(this.password))
         this.loginForm.get('username').enable();
         this.loginForm.get('password').enable();
         this.loginForm.get('nomComplet').enable();
@@ -103,7 +103,7 @@ variable : any = false;
        this.passwordchange= this.loginForm.value.password
      
    }else{
-     this.passwordchange=this.password;
+     this.passwordchange=btoa(this.password);
   
    }
   

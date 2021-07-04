@@ -1,3 +1,6 @@
+import { ListeEmpComponent } from './cours/liste-emp/liste-emp.component';
+import { EmploiDuTempsComponent } from './cours/emploi-du-temps/emploi-du-temps.component';
+import { MenuCoursComponent } from './cours/menu-cours/menu-cours.component';
 import { BultinComponent } from './notes/bultin/bultin.component';
 import { InscrireComponent } from './inscription/inscrire/inscrire.component';
 import { AjoutClasseMatComponent } from './classesMat/ajout-classe-mat/ajout-classe-mat.component';
@@ -60,6 +63,9 @@ const routes: Routes = [
     {path: 'lister_parent', component: ListeParentComponent },
     {path: 'lister_inscrits', component: ListeInscritsComponent },
     {path: 'bultin', component: BultinComponent },
+    {path: 'menu_cours', component: MenuCoursComponent },
+    {path: 'emp', component: EmploiDuTempsComponent },
+    {path: 'liste_emp', component: ListeEmpComponent },
     
     
 
