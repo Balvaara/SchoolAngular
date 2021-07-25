@@ -50,4 +50,8 @@ payement:Payement
   getMatCl(cl:any){
     return this.HttpClient.get<any>(`${environment.myApi}/api/cherche_mats/${cl}`);
   } 
+
+  RecuPay(id:number){
+    return this.HttpClient.get<any>(`${environment.myApi}/api/payements/${id}`);
+  }
 }

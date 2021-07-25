@@ -12,7 +12,7 @@
       <link rel="stylesheet" type="text/css" href="assets/acceil/css/style.css">
       <link rel="stylesheet" type="text/css" href="assets/acceil/css/jquery.mCustomScrollbar.css">
 
-<div class="pcoded-main-container">
+<div  class="mm">
     <div class="pcoded-wrapper">
         <div class="pcoded-content">
             <div class="pcoded-inner-content">
@@ -27,7 +27,7 @@
                                         <div class="card-block-small">
                                             <i class="fas fa-graduation-cap bg-c-blue card1-icon"></i>
                                             <span class="text-c-blue f-w-600">Eleves</span>
-                                            <h4>{{allEl}}</h4>
+                                            <h4 routerLink="/default/lister_eleve">{{allEl}}</h4>
                                             <div>
                                                 <span class="f-left m-t-10 text-muted">
                                                     <i class="fas fa-graduation-cap"></i>Power Is Knowledge
@@ -59,10 +59,10 @@
                                         <div class="card-block-small">
                                             <i class="fa fa-school bg-c-green card1-icon"></i>
                                             <span class="text-c-green f-w-600">Classes</span>
-                                            <h4>{{allCl}}</h4>
+                                            <h4 routerLink="/default/lister_classe">{{allCl}}</h4>
                                             <div>
                                                 <span class="f-left m-t-10 text-muted">
-                                                    <i class="fa fa-school"></i>Tracked via microsoft
+                                                    <i class="fa fa-school"></i>Classes
                                                 </span>
                                             </div>
                                         </div>
@@ -75,10 +75,10 @@
                                         <div class="card-block-small">
                                             <i class="fas fa-book-reader bg-c-yellow card1-icon"></i>
                                             <span class="text-c-yellow f-w-600">Matieres</span>
-                                            <h4>{{allMat}}</h4>
+                                            <h4 routerLink="/default/lister_matiere">{{allMat}}</h4>
                                             <div>
                                                 <span class="f-left m-t-10 text-muted">
-                                                    <i class="fas fa-book-reader"></i>Just update
+                                                    <i class="fas fa-book-reader"></i>Matieres
                                                 </span>
                                             </div>
                                         </div>
@@ -89,11 +89,10 @@
                                         <div class="card-block-small">
                                             <i class="fas fa-user-tie bg-c-green card1-icon"></i>
                                             <span class="text-c-yellow f-w-600">Professeurs</span>
-                                            <h4>{{allPr}}</h4>
+                                            <h4 routerLink="/default/lister_prof">{{allPr}}</h4>
                                             <div>
                                                 <span class="f-left m-t-10 text-muted">
-                                                <i class="fas fa-user-tie"></i>The Teacher 
-                                                was almost a messenger
+                                                <i class="fas fa-user-tie" ></i>The Teacher
                                                 </span>
                                             </div>
                                         </div>
@@ -130,12 +129,12 @@
                                 <div class="col-md-6 col-xl-3">
                                     <div class="card widget-card-1">
                                         <div class="card-block-small">
-                                            <i class="fas fa-user-secret bg-c-yellow card1-icon"></i>
-                                            <span class="text-c-yellow f-w-600">Roles</span>
-                                            <h4>{{allRole}}</h4>
+                                            <i class="fas fa-pen-square bg-c-yellow card1-icon"></i>
+                                            <span class="text-c-yellow f-w-600">Total Inscrits</span>
+                                            <h4 routerLink="/default/lister_inscrits">{{allRole}}</h4>
                                             <div>
                                                 <span class="f-left m-t-10 text-muted">
-                                                    <i class="fas fa-user-secret"></i>Everyone Has a role
+                                                    <i class="fas fa-feather-alt"></i>Everyone Has a role
                                                 </span>
                                             </div>
                                         </div>

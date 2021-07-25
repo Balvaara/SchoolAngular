@@ -48,7 +48,8 @@
                 <th scope="col">Niveau</th>
                 <th scope="col">Serie</th>
                 <th scope="col">Frais Inscription</th>
-                <th scope="col">Mentialite</th>
+                <th scope="col">Mensualite</th>
+                <th scope="col">Nbr Inscrits</th>
                 <th scope="col">Modifier</th>
                 <th scope="col">Supprimer</th>
             </tr>
@@ -62,7 +63,7 @@
                 <td>{{classe.series.libelleserie}}</td>
                 <td>{{classe.montantIns}}</td>
                 <td>{{classe.montantMens}}</td>
-                
+                <td class="text">[{{classe.inscrires.length}}]</td>
             <td><button type="button" data-toggle="tooltip" title=""
              class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"
                  data-toggle="modal" data-target="#exampleModalLongM"

@@ -18,9 +18,11 @@ export class ListePayementComponent implements OnInit {
   moi='' 
   variable=true
   variable1=false
+  variable2=false
   allpay
   allpayeleve
   allsession
+  payement:any
   constructor( private pay:PayementService,
     private formBuilder: FormBuilder,
     private alertService: AlertService,
@@ -29,12 +31,12 @@ export class ListePayementComponent implements OnInit {
   ngOnInit() {
     this.pay.getMois().subscribe(
       data=>{this.allmois=data['hydra:member'];
-       console.log(data);
+      //  console.log(data);
     }                                                                       
        ),
        this.loginForm = this.formBuilder.group({
-        matriculeEleve: ['', Validators.required],
-        mois: ['', Validators.required],
+        matriculeEleve: [''],
+        mois: [''],
         ses: ['', Validators.required]
     });
     this.pay.getSession().subscribe(
@@ -44,7 +46,7 @@ export class ListePayementComponent implements OnInit {
        )
        
     this.onChanges();
-    //  this.onChanges1();
+      this.onChanges1();
   
 
   }
@@ -70,22 +72,32 @@ export class ListePayementComponent implements OnInit {
     
   }
   
-  // onChanges1(): void {
+  onChanges1(): void {
+    this.loginForm.get('id').valueChanges.subscribe(val => {
+      // console.log(val);
+     
+      this.Recu(val);
+    });
+  }
+  Recu(val){
  
-  //   this.loginForm.get('mois').valueChanges.subscribe(val => {
-  
-  //  if (this.loginForm.value.mois) {
-  //   // console.log(this.loginForm.value.mois)
-  //   this.loginForm.get('matriculeEleve').disable();
-  //  }else{
-  //  this.loginForm.get('matriculeEleve').enable();
-  //  }
+    this.variable2 = !this.variable2;
+    this.pay.RecuPay(val).subscribe(
+      data=>{
+      
+        if (data){
+         
+        this.payement = data ;
+      
+          // console.log(this.payement)
+    
+      
        
-
-        
- 
-  //    });
-  // }
+        }
+   
+      }
+    )
+     }
  
   onSubmit() {
     this.submitted = true;

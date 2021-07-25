@@ -99,7 +99,14 @@
                 </div>
                
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>Montant a Payer</label>
+                            <input [value]="montant" name="montant" id="Name"   formControlName="montant" type="text" class="form-control" placeholder="$$$" disabled>
+                           
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
                        <div class="form-group form-group-default" >
                             <select class="form-control input-border-bottom" id="selectFloatingLabel" formControlName="mois"  [ngClass]="{ 'is-invalid': submitted && f.mois.errors }">
                                 <option value="">&nbsp;</option>
@@ -113,7 +120,7 @@
                             <label for="selectFloatingLabel" class="placeholder">...Choisissez Le Mois a Paye</label>
                     </div>
                       </div>  
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-4">
                     <div class="form-group form-group-default">
                         <button  [disabled]="loading" class="btn btn-primary" (click)="onSubmit()">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">
@@ -129,43 +136,3 @@
 </div>
 </div>
 </div>
-<!-- <div class="col-md-6">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">Recu D'inscription</div>
-        </div>
-        
-       
-        <div class="card-body">
-            <section class="flex">
-                <dl>
-                    <dt>Nom </dt>
-                    <dd>ggg</dd>
-                    <dt>Prenom</dt>
-                    <dd>ggg</dd>
-                    <dt>Matricule</dt>
-                    <dd>ggg</dd>
-                    <dt>Classe</dt>
-                    <dd>ggg</dd>
-                    <dt>Session</dt>
-                    <dd>ggg</dd>
-                    <dt>Montant</dt>
-                    <dd>ggg</dd>
-                </dl>
-              
-            </section>
-            <div class="chart-container">
-                <div class="card-header">
-                    <div class="card-title"></div>
-                </div>
-                <p>Le Savoir C'est Le Povoir</p>
-                <canvas id="lineChart"></canvas>
-               
-            </div>
-        </div>
-        <button  class="btn btn-primary" (click)="Imprimer()">
-            imp
-        </button>
-    </div>
-    
-</div> -->

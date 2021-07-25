@@ -17,6 +17,8 @@ allmat
 prenompr=''
 nompr=''
 adressepr=''
+loading = false;
+
 telpr=''
 datenaisspr=''
 lieunaisspr=''
@@ -73,7 +75,7 @@ matss
       data=>{
       
         if (data) {
-          console.log(data)
+          // console.log(data)
         const user = data ;
         this.idmod =user.id;
         this.prenompr = user.prenompr;
@@ -187,17 +189,17 @@ if (this.loginForm.value.mats=='') {
     
       // mats:this.Mymat,
   }
-  console.log(user);
+  // console.log(user);
     // this.submitted = true;
 
 
 
     // stop here if form is invalid
-    // if (this.loginForm.invalid) {
-    //     return;
-    // }
+    if (this.loginForm.invalid) {
+        return;
+    }
 
-    // this.loading = true;
+    this.loading = true;
     
    this.prof.modifier(this.idmod,user)
         .pipe(first())

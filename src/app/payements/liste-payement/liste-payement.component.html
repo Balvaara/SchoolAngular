@@ -25,7 +25,7 @@
         </div>
     </div>
     <div *ngIf="variable">
- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+ <form [formGroup]="loginForm" >
     <div class="form-row">
         <div class="form-group col-md-5">
             <div class="form-group">
@@ -68,7 +68,7 @@
             </div>
         </div>
     <div class="card-action">
-        <button [disabled]="loading" class="btn btn-primary">
+        <button [disabled]="loading" class="btn btn-primary" (click)="onSubmit()">
             <span *ngIf="loading"  class="spinner-border spinner-border-sm mr-1"></span>
             <i class="fa fa-search search-icon"></i>Recherche
         </button>
@@ -94,6 +94,7 @@
                 <th scope="col">Classe</th>
                 <th scope="col">Date Paeyment</th>
                 <th scope="col">Montant</th>
+                <th scope="col">Reçu</th>
             </tr>
         </thead>
         <tbody>
@@ -105,7 +106,12 @@
                 <td>{{paye.inscrire.classes.libelleclasse}}</td>
                 <td>{{paye.dateDePayement | date:'dd-MM-yyyy H:mm:ss'}}</td>
                 <td>{{paye.montantMensualite}}</td>
-                
+                <td><button type="button" data-toggle="tooltip" title=""
+                        class="btn btn-link btn-primary btn-lg" 
+                        (click)="Recu(paye.id)"   data-toggle="modal"
+                        data-target="#exampleModalLongMyRecu">
+                        <i class="fas fa-file-download"></i></button>
+                </td>
             
             </tr>
            
@@ -125,4 +131,76 @@
     </div>
 </div>   
 
+</div>
+<div class="container"  *ngIf="variable2">
+    <div  class="modal fade" id="exampleModalLongMyRecu" tabindex="2" role="dialog" aria-labelledby="exampleModalLongMyRecuTitle" aria-hidden="true" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+    
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="box-title"><i class="icon-arrow-right" ></i>Recu D'inscription</h3>
+                        </div>
+      <div id = " print-section " > 
+          <header>
+            <h1>Recu de Payement
+              <h2>DgSchool/ <p style="color: #28d;"></p></h2>
+            </h1>
+          </header>
+          <section class="flex">
+            <dl>
+              <dt>Num Payement</dt>
+              <dd>{{payement.numPaye}}</dd>
+              <dt>Date Du Payement</dt>
+              <dd>{{payement.dateDePayement |date:'dd-MM-yyyy H:mm:ss'}}</dd>
+            </dl>
+          </section>
+          <section class="flex">
+            <dl class="bloc">
+              <dt>Eleve:</dt>
+              <dd>
+                
+                <dl>
+                  <dt>Nom Complet </dt>
+                  <dd>{{payement.inscrire.eleves.prenom}} 
+                  {{payement.inscrire.eleves.nom}}</dd>
+                  <dt>Matricule </dt>
+                  <dd>{{payement.inscrire.eleves.matriculeEleve}}</dd>
+                   <dt>Sexe</dt>
+                  <dd>{{payement.inscrire.eleves.sexe}}</dd>
+                   <dt>Date De Naissance</dt>
+                  <dd>{{payement.inscrire.eleves.datenais |date:'dd-MM-yyyy'}}</dd>
+                  <dt>Classe </dt>
+                  <dd>{{payement.inscrire.classes.libelleclasse}}</dd>
+                  <dt>Annee Scolaire </dt>
+                  <dd>{{payement.inscrire.session.libAnn}}</dd>
+                  <dt>Mois </dt>
+                   <dd>{{payement.mois.libellemois}}</dd>
+                    <dt>Montant </dt>
+                    <dd>{{payement.montantMensualite}}</dd>
+                  <!-- <dt></dt>
+                  <dd>bigboss@bigcompanylonglongemail.com</dd> -->
+                </dl>
+              </dd>
+            </dl>
+            
+          </section>
+         
+          <footer>
+            <p> – Informatique − Développement WEB </p>
+            <p>Ngaye Meckhe Angle RN:1 | <a href="mailto:lamine.mbaye0104@gmail.com">lamine.mbaye0104@gmail.com</a></p>
+          </footer>
+          </div>
+          <button printSectionId = " print-section " ngxPrint class="btn btn-outline-primary" ><span class="fas fa-fw fa-print"></span>Imprimer </button > 
+
+                    </div>
+                    </div>
+                    </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Terminer</button>
+          </div>
+        </div>
+      </div>
 </div>

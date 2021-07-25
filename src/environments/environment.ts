@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  myApi:"http://127.0.0.1:8000"
+  myApi: 'https://dgschoolapp.herokuapp.com'
 };
 
 /*

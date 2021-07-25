@@ -63,7 +63,7 @@ export class ListClasseComponent implements OnInit {
     this.classervice.getAllClasse().subscribe(
       data=>{
         this.allclasse=data;
-          // console.log(data);  
+        // console.log(data);  
 
       }
     ),
@@ -190,8 +190,8 @@ export class ListClasseComponent implements OnInit {
         libelleclasse:this.libelleclasseChange,
         niveaux:`api/niveaux/${this.niveauChange}`,
         series:`api/series/${this.serieChange}`,
-        montantIns:this.montantInsChange,
-        montantMens:this.montantMensChange,
+        montantIns:parseInt(this.montantInsChange),
+        montantMens:parseInt(this.montantMensChange),
         
 
     }

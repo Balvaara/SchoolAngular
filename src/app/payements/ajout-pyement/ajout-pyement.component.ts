@@ -20,7 +20,7 @@ export class AjoutPyementComponent implements OnInit {
   session=''
   variable=false
   allsession
-  nom='';prenom='';classe='';
+  nom='';prenom='';classe='';montant='';
   constructor(private formBuilder: FormBuilder,
     private pay:PayementService,
     private router: Router) { }
@@ -32,7 +32,8 @@ export class AjoutPyementComponent implements OnInit {
       mois: ['', Validators.required],
       prenom: ['', ],
       nom: ['', ],
-      classe: ['', ]
+      classe: ['', ],
+      montant: ['', ]
   });
   this.pay.getSession().subscribe(
     data=>{this.allsession=data['hydra:member'];
@@ -93,6 +94,7 @@ Recherche() {
       this.nom =eleve.eleves.nom;
       this.prenom = eleve.eleves.prenom;
       this.classe = eleve.classes.libelleclasse;
+      this.montant=eleve.classes.montantMens
       
       // this.loginForm.get('nom');
       // this.loginForm.get('prenom');
