@@ -19,6 +19,7 @@ export class AjoutClasseComponent implements OnInit {
   allser
   allniv
   libelleserie=''
+  laSerie:any
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private classe:ClasseService,
@@ -32,7 +33,7 @@ export class AjoutClasseComponent implements OnInit {
       libelleclasse: ['', Validators.required],
       montantMens: ['', Validators.required],
       montantIns: ['', Validators.required],
-      series: ['', Validators.required],
+      series: [''],
       niveaux: ['', Validators.required],
 
   });
@@ -71,12 +72,18 @@ export class AjoutClasseComponent implements OnInit {
   
  
   Enregistrer() {
+    if(this.loginForm.value.series==''){
+      this.laSerie=null
+    }else{
+      this.laSerie=`api/series/${this.loginForm.value.series}`
+    }
+    console.log(this.laSerie);
     const classes={
       codeclasse:this.loginForm.value.codeclasse,
       libelleclasse:this.loginForm.value.libelleclasse,
       montantMens:parseInt(this.loginForm.value.montantMens),
       montantIns:parseInt(this.loginForm.value.montantIns),
-      series:`api/series/${this.loginForm.value.series}`,
+      series:this.laSerie,
       niveaux:`api/niveaux/${this.loginForm.value.niveaux}`,
      
   }

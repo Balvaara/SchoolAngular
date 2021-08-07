@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  myApi: 'https://dgschoolapp.herokuapp.com'
+  myApi: 'https://schooldgapp.herokuapp.com'
 };
 
 /*
