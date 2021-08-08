@@ -16,7 +16,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SiderbarComponent } from './siderbar/siderbar.component';
 import { AjouUserComponent } from './users/ajou-user/ajou-user.component';
 import { ListerUserComponent } from './users/lister-user/lister-user.component';
-import { JwPaginationComponent } from 'jw-angular-pagination';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
@@ -59,7 +58,6 @@ import { ListeEmpComponent } from './cours/liste-emp/liste-emp.component';
     SiderbarComponent,
     AjouUserComponent,
     ListerUserComponent,
-    JwPaginationComponent,
     StaticComponent,
     AjoutPyementComponent,
     ListePayementComponent,
